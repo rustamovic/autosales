@@ -1,0 +1,6 @@
+#back {
+  background: linear-gradient(-80deg, rgb(245, 245, 245) 49.9%, #007bff 50%);
+}
+#back2 {
+  background: linear-gradient(-80deg, #007bff 49.9%, rgb(245, 245, 245) 50%);
+}

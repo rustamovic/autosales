@@ -1,0 +1,93 @@
+@media screen and (max-width: 575px) {
+  #ul-navbar {
+    display: flex;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    flex-direction: row;
+  }
+}
+span {
+  margin-left: 6px;
+}
+#FIcon1:hover {
+  color: lightskyblue;
+}
+#FIcon2:hover {
+  color: lightseagreen;
+}
+#FIcon3:hover {
+  color: red;
+}
+#FIcon4:hover {
+  color: darkblue;
+}
+#FIcon5:hover {
+  color: blue;
+}
+#FIcon1 {
+  color: #939598;
+}
+#FIcon2 {
+  color: #939598;
+}
+#FIcon3 {
+  color: #939598;
+}
+#FIcon4 {
+  color: #939598;
+}
+#FIcon5 {
+  color: #939598;
+}
+#dialog {
+  color: #939598;
+}
+#dialog:hover {
+  color: #414042;
+}
+#colr {
+  color: #939598;
+}
+#colr:hover {
+  color: #414042;
+}
+.colr {
+  color: #939598;
+  background-color: #939598;
+}
+.navbaar {
+  position: absolute;
+  width: 100%;
+  position: fixed;
+  top: 42.4px;
+  transition: top 0.7s;
+  z-index: 110;
+  background: #f4f4f4;
+  box-shadow: none;
+  border-top: 1px solid #dee2e6;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.navbar--hidden {
+  top: -75px;
+}
+.navbaaar {
+  position: absolute;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  transition: top 0.6s;
+  z-index: 111;
+  background: #fff;
+  padding-top: 0;
+  padding-bottom: 0;
+  box-shadow: none;
+}
+.navbaar--hidden {
+  top: -75px;
+}
+#home {
+  box-shadow: none;
+  position: absolute;
+}
