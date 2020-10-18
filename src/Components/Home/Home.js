@@ -10,7 +10,7 @@ import Features from "./Features";
 import Testominals from "./Testominal";
 import Team from "./Team";
 import FAQ from "./Faq";
-import Func from "./SendFunc/tradefunc";
+import Func from "./SendFunc/VIN";
 // import AnimationR from "../AnimationRevealPage";
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col lg:flex-row lg:items-center max-w-screen-xl mx-auto py-20 md:py-24`;

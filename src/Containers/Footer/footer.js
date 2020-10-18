@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
@@ -90,49 +91,13 @@ const useStyles = makeStyles(({ palette, typography }) => ({
 }));
 
 export const Footer = React.memo(function ArcAppFooter() {
+  const scrollToTop = () => window.scrollTo(0, 0);
   const classes = useStyles();
   return (
     <FontProvider
       fonts={[{ font: "Rambla", weights: [400, 700] }, { font: "Nunito" }]}
     >
       <Box width={"100%"}>
-        {/* <Box px={2} py={6} className={classes.top} position={"relative"}>
-          <div className={classes.overlay}>
-            <img
-              src={
-                "https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2251&q=80"
-              }
-              alt={""}
-            />
-          </div>
-          <ThemeProvider theme={darkTheme}>
-            <ColumnToRow
-              at={"sm"}
-              cssPosition={"relative"}
-              columnStyle={{ alignItems: "center", textAlign: "center" }}
-              rowStyle={{ justifyContent: "center" }}
-              gap={{ xs: 2, sm: 3, md: 4 }}
-              wrap
-            >
-              <Item>
-                <Typography className={classes.newsletterText}>
-                  <Font>Subscribe to our quarterly newsletter</Font>
-                </Typography>
-              </Item>
-              <Item>
-                <EmailSubscribe
-                  className={classes.form}
-                  onSubmit={(email) => alert(`Your email is ${email}.`)}
-                  useStyles={useReadyEmailSubscribeStyles}
-                  inputClearedAfterSubmit
-                >
-                  <EmailTextInput placeholder="Enter your email" />
-                  <SubmitButton>Subscribe</SubmitButton>
-                </EmailSubscribe>
-              </Item>
-            </ColumnToRow>
-          </ThemeProvider>
-        </Box> */}
         <Box px={2} py={10} className={classes.middle}>
           <Container disableGutters>
             <Grid container spacing={4}>
@@ -147,13 +112,11 @@ export const Footer = React.memo(function ArcAppFooter() {
                   borderRadius={12}
                 />
                 <Typography className={classes.info}>
-                  <Font index={1}>
-                    Architect VR, 830-1183 BKK Thailand 10220
-                  </Font>
+                  <Font index={1}>Auto Sales Inc., 830-1183 NY US 10220</Font>
                 </Typography>
 
                 <Typography className={classes.info}>
-                  <Font index={1}>admin@arc.fake</Font>
+                  <Font index={1}>example@email.com</Font>
                 </Typography>
               </Grid>
               <Grid item xs={12} md={8} lg={6}>
@@ -183,29 +146,53 @@ export const Footer = React.memo(function ArcAppFooter() {
                         <Font>Information</Font>
                       </CategoryTitle>
                       <CategoryItem>
-                        <Font index={1}>License</Font>
+                        <Font index={1}>
+                          <Link to="" onClick={scrollToTop()}>
+                            License
+                          </Link>
+                        </Font>
                       </CategoryItem>
                       <CategoryItem>
-                        <Font index={1}>Privacy Policy</Font>
+                        <Font index={1}>
+                          <Link to="">Privacy Policy</Link>
+                        </Font>
                       </CategoryItem>
                       <CategoryItem>
-                        <Font index={1}>Releases</Font>
+                        <Font index={1}>
+                          <Link to="">Terms of Service</Link>
+                        </Font>
                       </CategoryItem>
                       <CategoryItem>
-                        <Font index={1}>FAQ</Font>
+                        <Font index={1}>
+                          <Link to="" onClick={scrollToTop()}>
+                            FAQ
+                          </Link>
+                        </Font>
                       </CategoryItem>
                     </CategoryProvider>
                   </Grid>
                   <Grid item xs={6} sm={4}>
                     <CategoryProvider useStyles={useMagCategoryMenuStyles}>
                       <CategoryTitle>
-                        <Font>About</Font>
+                        <Font>
+                          <Link to="" onClick={scrollToTop()}>
+                            About
+                          </Link>
+                        </Font>
                       </CategoryTitle>
                       <CategoryItem>
-                        <Font index={1}>Contact</Font>
+                        <Font index={1}>
+                          <Link to="" onClick={scrollToTop()}>
+                            Contact
+                          </Link>
+                        </Font>
                       </CategoryItem>
                       <CategoryItem>
-                        <Font index={1}>Team</Font>
+                        <Font index={1}>
+                          <Link to="" onClick={scrollToTop()}>
+                            Team
+                          </Link>
+                        </Font>
                       </CategoryItem>
                       <CategoryItem>
                         <Font index={1}>Support</Font>
@@ -221,10 +208,34 @@ export const Footer = React.memo(function ArcAppFooter() {
                   </CategoryTitle>
                 </CategoryProvider>
                 <SocialProvider useStyles={usePoofSocialLinkStyles}>
-                  <SocialLink brand={"Envelope"} />
-                  <SocialLink brand={"GooglePlus"} />
-                  <SocialLink brand={"Pinterest"} />
-                  <SocialLink brand={"Dribbble"} />
+                  <a
+                    href="https://www.linkedin.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <SocialLink brand={"LinkedIn"} />
+                  </a>
+                  <a
+                    href="https://twitter.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <SocialLink brand={"Twitter"} />
+                  </a>
+                  <a
+                    href="https://www.facebook.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <SocialLink brand={"Facebook"} />
+                  </a>
+                  <a
+                    href="https://instagram.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <SocialLink brand={"Instagram"} />
+                  </a>
                 </SocialProvider>
               </Grid>
             </Grid>
@@ -244,13 +255,18 @@ export const Footer = React.memo(function ArcAppFooter() {
                 <NavMenu useStyles={usePlainNavigationMenuStyles}>
                   <ColumnToRow at={"sm"}>
                     <NavItem className={classes.legalLink}>
-                      <Font>Terms & Conditions</Font>
+                      <Font>
+                        <Link to="/termsofservice" onClick={scrollToTop}>
+                          Terms & Conditions
+                        </Link>
+                      </Font>
                     </NavItem>
                     <NavItem className={classes.legalLink}>
-                      <Font>Privacy Policy</Font>
-                    </NavItem>
-                    <NavItem className={classes.legalLink}>
-                      <Font>Sitemap</Font>
+                      <Font>
+                        <Link to="/privacyvspolicy" onClick={scrollToTop}>
+                          Privacy Policy
+                        </Link>
+                      </Font>
                     </NavItem>
                   </ColumnToRow>
                 </NavMenu>
@@ -263,8 +279,8 @@ export const Footer = React.memo(function ArcAppFooter() {
                     color={"textSecondary"}
                   >
                     <Font index={1}>
-                      Designed by Anonymous © Fake Studio 2020 All right
-                      reserved
+                      Designed by Developers team of Auto Sales Inc. © Auto
+                      Sales Studio 2020 All right reserved
                     </Font>
                   </Typography>
                 </Box>

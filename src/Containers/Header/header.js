@@ -3,18 +3,13 @@ import {
   MDBNavbar,
   MDBNavbarBrand,
   MDBNavbarNav,
-  MDBNavItem,
-  MDBLink,
   MDBNavbarToggler,
   MDBCollapse,
-  MDBDropdown,
-  MDBDropdownToggle,
-  MDBDropdownMenu,
-  MDBDropdownItem,
+  MDBNavItem,
+  MDBNavLink,
+  MDBTooltip,
   MDBIcon,
 } from "mdbreact";
-import { Link } from "react-router-dom";
-import classnames from "classnames";
 import "./header.css";
 import "mdbreact/dist/css/mdb.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -23,170 +18,154 @@ import "bootstrap-css-only/css/bootstrap.min.css";
 class header extends Component {
   state = {
     collapseID: "",
-    prevScrollpos: window.pageYOffset,
-    visible: true,
   };
+
   toggleCollapse = (collapseID) => () =>
     this.setState((prevState) => ({
       collapseID: prevState.collapseID !== collapseID ? collapseID : "",
     }));
+
   closeCollapse = (collID) => () => {
     const { collapseID } = this.state;
     window.scrollTo(0, 0);
     collapseID === collID && this.setState({ collapseID: "" });
   };
-  // Adds an event listener when the component is mount.
-  componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
-  }
-  // Remove the event listener when the component is unmount.
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll);
-  }
-  // Hide or show the menu.
-  handleScroll = () => {
-    const { prevScrollpos } = this.state;
-    const currentScrollPos = window.pageYOffset;
-    const visible = prevScrollpos > currentScrollPos;
-    this.setState({
-      prevScrollpos: currentScrollPos,
-      visible,
-    });
-  };
+
   render() {
+    const overlay = (
+      <div
+        id="sidenav-overlay"
+        style={{ backgroundColor: "transparent" }}
+        onClick={this.toggleCollapse("mainNavbarCollapse")}
+      />
+    );
+
     const { collapseID } = this.state;
     return (
       <div>
-        <div id="home">
-          <MDBNavbar
-            className={classnames("navbaaar", {
-              "navbaar--hidden": !this.state.visible,
-            })}
-            id="bc"
-            dark
-            expand="sm"
-          >
-            <MDBNavbarNav id="ul-navbar" left>
-              <div>
-                <span>
-                  <a
-                    href="https://linkedin.com/company/konteks-uz/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MDBIcon id="FIcon1" brand icon="linkedin" size="1x" />
-                  </a>
-                </span>
-                <span>
-                  <a
-                    href="https://twitter.com/konteksuz/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MDBIcon id="FIcon2" brand icon="twitter" size="1x" />
-                  </a>
-                </span>
-                <span>
-                  <a
-                    href="https://instagram.com/konteksuz/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MDBIcon id="FIcon3" brand icon="instagram" size="1x" />
-                  </a>
-                </span>
-                <span>
-                  <a
-                    href="https://www.facebook.com/KonteksLLC/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MDBIcon id="FIcon4" brand icon="facebook" size="1x" />
-                  </a>
-                </span>
-              </div>
-            </MDBNavbarNav>
-          </MDBNavbar>
-          <MDBNavbar
-            id="bc2"
-            className={classnames("navbaar", {
-              "navbar--hidden": !this.state.visible,
-            })}
-            dark
-            expand="md"
-          >
-            <MDBNavbarBrand>
-              <Link to="/" onClick={this.scrollToTop}>
-                <img src="" height="50" alt="Logo" />
-              </Link>
+        <div className="flyout">
+          <MDBNavbar color="indigo" dark expand="md" fixed="top" scrolling>
+            <MDBNavbarBrand href="/" className="py-0 font-weight-bold">
+              {/* <h2 style={{ height: "2.5rem", width: "2.5rem" }}>LOGO</h2> */}
+              <strong className="align-middle">LOGO</strong>
             </MDBNavbarBrand>
             <MDBNavbarToggler
-              className="colr"
-              onClick={this.toggleCollapse("navbarCollapse4")}
+              onClick={this.toggleCollapse("mainNavbarCollapse")}
             />
-            <MDBCollapse id="navbarCollapse4" isOpen={collapseID} navbar>
+            <MDBCollapse id="mainNavbarCollapse" isOpen={collapseID} navbar>
               <MDBNavbarNav right>
                 <MDBNavItem>
-                  <MDBLink
-                    id="colr"
-                    onClick={this.closeCollapse("navbarCollapse4")}
+                  <MDBNavLink
+                    exact
                     to="/"
+                    onClick={this.closeCollapse("mainNavbarCollapse")}
                   >
-                    HOME
-                  </MDBLink>
+                    <strong>Home</strong>
+                  </MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <MDBLink
-                    id="colr"
-                    onClick={this.closeCollapse("navbarCollapse4")}
+                  <MDBNavLink
+                    onClick={this.closeCollapse("mainNavbarCollapse")}
                     to="/about"
                   >
-                    ABOUT
-                  </MDBLink>
+                    <strong>About</strong>
+                  </MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <MDBLink
-                    id="colr"
-                    onClick={this.closeCollapse("navbarCollapse4")}
-                    to="/"
+                  <MDBNavLink
+                    onClick={this.closeCollapse("mainNavbarCollapse")}
+                    to="/sell"
                   >
-                    Sell Your Car
-                  </MDBLink>
+                    <strong>Sell your car</strong>
+                  </MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <MDBDropdown>
-                    <MDBDropdownToggle id="colr" nav caret>
-                      CONTACT
-                      <div className="d-none d-md-inline"></div>
-                    </MDBDropdownToggle>
-                    <MDBDropdownMenu className="dropdown-default">
-                      <MDBLink
-                        to="/faq"
-                        onClick={this.closeCollapse("navbarCollapse4")}
-                      >
-                        <MDBDropdownItem id="colr">FAQ</MDBDropdownItem>
-                      </MDBLink>
-                      <MDBLink
-                        to="/contacts"
-                        onClick={this.closeCollapse("navbarCollapse4")}
-                      >
-                        <MDBDropdownItem id="colr">Contact Us</MDBDropdownItem>
-                      </MDBLink>
-                    </MDBDropdownMenu>
-                  </MDBDropdown>
+                  <MDBNavLink
+                    onClick={this.closeCollapse("mainNavbarCollapse")}
+                    to="/faq"
+                  >
+                    <strong>FAQ</strong>
+                  </MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <MDBLink
-                    id="colr"
-                    onClick={this.closeCollapse("navbarCollapse4")}
+                  <MDBNavLink
+                    onClick={this.closeCollapse("mainNavbarCollapse")}
+                    to="/contact"
+                  >
+                    <strong>Contact</strong>
+                  </MDBNavLink>
+                </MDBNavItem>
+                <MDBNavItem>
+                  <MDBNavLink
+                    onClick={this.closeCollapse("mainNavbarCollapse")}
                     to="/login"
                   >
-                    LOG IN
-                  </MDBLink>
+                    <strong>Login</strong>
+                  </MDBNavLink>
                 </MDBNavItem>
+                <div id="ul-navbar">
+                  <MDBNavItem>
+                    <MDBTooltip
+                      placement="bottom"
+                      domElement
+                      style={{ display: "block" }}
+                    >
+                      <a
+                        className="nav-link Ripple-parent"
+                        href="https://twitter.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <strong>
+                          <MDBIcon fab icon="twitter" />
+                        </strong>
+                      </a>
+                      <span>TWITTER</span>
+                    </MDBTooltip>
+                  </MDBNavItem>
+                  <MDBNavItem>
+                    <MDBTooltip
+                      placement="bottom"
+                      domElement
+                      style={{ display: "block" }}
+                    >
+                      <a
+                        className="nav-link Ripple-parent"
+                        href="https://facebook.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <strong>
+                          <MDBIcon fab icon="facebook" />
+                        </strong>
+                      </a>
+                      <span>FACEBOOK</span>
+                    </MDBTooltip>
+                  </MDBNavItem>
+                  <MDBNavItem className="mr-2">
+                    <MDBTooltip
+                      placement="bottom"
+                      domElement
+                      style={{ display: "block" }}
+                    >
+                      <a
+                        className="nav-link Ripple-parent"
+                        href="https://instagram.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <strong>
+                          <MDBIcon fab icon="instagram" />
+                        </strong>
+                      </a>
+                      <span>INSTAGRAM</span>
+                    </MDBTooltip>
+                  </MDBNavItem>
+                </div>
               </MDBNavbarNav>
             </MDBCollapse>
           </MDBNavbar>
+          {collapseID && overlay}
         </div>
       </div>
     );

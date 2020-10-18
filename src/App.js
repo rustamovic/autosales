@@ -10,6 +10,10 @@ import Login from "./Components/Login/Login";
 import NotFound from "./Components/NotFound";
 import WhoWeAre from "./Components/About/WhoWe/top";
 import Buy from "./Components/ButCar/BuyCar";
+import Contact from "./Components/Contact/Contact";
+import Terms from "./Components/Conditions/TermsOfService";
+import Policy from "./Components/Conditions/PrivacyPolicy";
+import Stepper from "./Components/Home/SendFunc/stepper/main";
 import "tailwindcss/dist/base.css";
 const App = () => {
   // const [isLoaded, setIsLoaded] = React.useState(true);
@@ -29,6 +33,10 @@ const App = () => {
           <Route exact path="/login" component={Login} />
           <Route exact path="/about" component={WhoWeAre} />
           <Route exact path="/sell" component={Buy} />
+          <Route exact path="/contact" component={Contact} />
+          <Route exact path="/termsofservice" component={Terms} />
+          <Route exact path="/privacyvspolicy" component={Policy} />
+          <Route exact path="/stepper" component={Stepper} />
           <Route component={NotFound} />
         </Switch>
         <Footer />

@@ -111,9 +111,6 @@ export default ({
                 </Feature>
               ))}
             </Features>
-            <PrimaryButton as="a" href={primaryButtonUrl}>
-              {primaryButtonText}
-            </PrimaryButton>
           </TextContent>
         </TextColumn>
       </TwoColumn>
