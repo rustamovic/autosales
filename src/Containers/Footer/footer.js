@@ -10,6 +10,8 @@ import {
   ThemeProvider,
   createMuiTheme,
 } from "@material-ui/core/styles";
+import logo from "../../Assets/SVG/logo.svg";
+
 import { FontProvider } from "./Fonts/Font";
 import { Font } from "./Fonts/Font";
 import { ColumnToRow, Item } from "@mui-treasury/components/flex";
@@ -33,7 +35,6 @@ import { useMagCategoryMenuStyles } from "@mui-treasury/styles/categoryMenu/mag"
 import { usePoofSocialLinkStyles } from "@mui-treasury/styles/socialLink/poof";
 import { useReadyEmailSubscribeStyles } from "@mui-treasury/styles/emailSubscribe/ready";
 import { usePlainNavigationMenuStyles } from "@mui-treasury/styles/navigationMenu/plain";
-
 const darkTheme = createMuiTheme({ palette: { type: "dark" } });
 
 const useStyles = makeStyles(({ palette, typography }) => ({
@@ -107,7 +108,7 @@ export const Footer = React.memo(function ArcAppFooter() {
                   mt={-3}
                   width={120}
                   height={64}
-                  src="https://cdn.dribbble.com/users/1007527/screenshots/2992564/arc-logo.png"
+                  src={logo}
                   alt=""
                   borderRadius={12}
                 />

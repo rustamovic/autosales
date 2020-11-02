@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import logo from "../../Assets/SVG/logo.svg";
 import {
   MDBNavbar,
   MDBNavbarBrand,
@@ -14,7 +15,9 @@ import "./header.css";
 import "mdbreact/dist/css/mdb.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
+
 // import Brand from "../../Assets/logo-2.png";
+
 class header extends Component {
   state = {
     collapseID: "",
@@ -46,13 +49,20 @@ class header extends Component {
         <div className="flyout">
           <MDBNavbar color="indigo" dark expand="md" fixed="top" scrolling>
             <MDBNavbarBrand href="/" className="py-0 font-weight-bold">
-              {/* <h2 style={{ height: "2.5rem", width: "2.5rem" }}>LOGO</h2> */}
-              <strong className="align-middle">LOGO</strong>
+              <h2 style={{ height: "2.5rem", width: "2.5rem" }}>
+                <img src={logo} alt="qwerty" height="10" />
+              </h2>
+              {/* <strong className="align-middle"></strong> */}
             </MDBNavbarBrand>
             <MDBNavbarToggler
               onClick={this.toggleCollapse("mainNavbarCollapse")}
             />
-            <MDBCollapse id="mainNavbarCollapse" isOpen={collapseID} navbar>
+            <MDBCollapse
+              className="text-left"
+              id="mainNavbarCollapse"
+              isOpen={collapseID}
+              navbar
+            >
               <MDBNavbarNav right>
                 <MDBNavItem>
                   <MDBNavLink

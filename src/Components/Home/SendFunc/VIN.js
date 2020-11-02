@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { MDBContainer, MDBCol } from "mdbreact";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import { ReactComponent as SubmitButtonIcon } from "feather-icons/dist/icons/log-in.svg";
 import styled from "styled-components";
 import tw from "twin.macro";
@@ -36,8 +35,8 @@ class Agent extends Component {
       });
   };
   render() {
-    const SubmitButton = styled.button`
-      ${tw` tracking-wide font-semibold bg-blue-500 text-gray-100 w-full py-4 rounded-lg hover:bg-blue-600 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none`}
+    let SubmitButton = styled.button`
+      ${tw` tracking-wide font-semibold bg-gray-500 text-gray-100 w-full py-4 rounded-lg hover:bg-blue-600 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none`}
       .icon {
         ${tw`w-6 h-6 -ml-2`}
       }
@@ -46,6 +45,18 @@ class Agent extends Component {
       }
     `;
     const { VIN } = this.state;
+    const enabled = VIN.length > 16;
+    if (enabled) {
+      SubmitButton = styled.button`
+        ${tw` tracking-wide font-semibold bg-blue-500 text-gray-100 w-full py-4 rounded-lg hover:bg-blue-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none`}
+        .icon {
+          ${tw`w-6 h-6 -ml-2`}
+        }
+        .text {
+          ${tw`ml-3`}
+        }
+      `;
+    }
     return (
       <MDBContainer fluid id="rty">
         <MDBCol className="py-3 border shadow bg-white">
@@ -68,19 +79,17 @@ class Agent extends Component {
               className="form-control"
               onChange={this.changeHandler}
               maxLength="17"
+              minLength="17"
               required
             />
             <Alert />
             <br />
             <div className="text-center">
-              {/* <button
-                className="btn btn-indigo"
-                
+              <SubmitButton
                 type="submit"
+                disabled={!enabled}
+                onClick={this.postDataHandler}
               >
-                Login
-              </button> */}
-              <SubmitButton type="submit" onClick={this.postDataHandler}>
                 <SubmitButtonIcon className="icon" />
                 <span className="text">What is my car worth</span>
               </SubmitButton>

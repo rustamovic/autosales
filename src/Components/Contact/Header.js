@@ -32,7 +32,7 @@ const Heading = tw(
 const Description = tw.p`mt-4 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-gray-500`;
 
 const Form = tw.form`mt-8 md:mt-10 text-sm flex flex-col lg:flex-row`;
-const Input = tw.input`border-2 px-5 py-3 rounded focus:outline-none font-medium transition duration-300 hocus:border-blue-500`;
+const Input = tw.a`border-2 px-5 py-3 rounded focus:outline-none font-medium transition duration-300 hocus:border-blue-500`;
 
 const SubmitButton = tw(PrimaryButton)`inline-block lg:ml-6 mt-6 lg:mt-0`;
 
@@ -45,7 +45,7 @@ export default ({
     </>
   ),
   description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  submitButtonText = "Contact Me",
+  submitButtonText = "Call/Contact Us",
   formAction = "#",
   formMethod = "get",
   textOnLeft = true,
@@ -64,12 +64,12 @@ export default ({
             <Heading>{heading}</Heading>
             <Description>{description}</Description>
             <Form action={formAction} method={formMethod}>
-              <Input
-                type="email"
-                name="email"
-                placeholder="Your Email Address"
-              />
-              <SubmitButton type="submit">{submitButtonText}</SubmitButton>
+              <Input href="tel:+99899330031003" name="phone">
+                +998(33)003-1-003
+              </Input>
+              <SubmitButton disabled type="submit">
+                {submitButtonText}
+              </SubmitButton>
             </Form>
           </TextContent>
         </TextColumn>

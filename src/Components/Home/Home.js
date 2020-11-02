@@ -4,13 +4,14 @@ import tw from "twin.macro";
 //eslint-disable-next-line
 import { css } from "styled-components/macro";
 import "./Testominals.css";
-import DesignIllustration from "../../Assets/PNG/bugatti2.png";
+import DesignIllustration from "../../Assets/PNG/ferrari.png";
 import CustomersLogoStripImage from "../../Assets/PNG/customers-logo-strip.png";
 import Features from "./Features";
 import Testominals from "./Testominal";
 import Team from "./Team";
 import FAQ from "./Faq";
 import Func from "./SendFunc/VIN";
+import LowerPart from "../LowerPart/LowerPart";
 // import AnimationR from "../AnimationRevealPage";
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col lg:flex-row lg:items-center max-w-screen-xl mx-auto py-20 md:py-24`;
@@ -69,6 +70,7 @@ export default ({ roundedHeaderButton }) => {
       <Team />
       <Testominals />
       <FAQ />
+      <LowerPart />
     </div>
   );
 };

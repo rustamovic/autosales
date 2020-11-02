@@ -7,7 +7,7 @@ import "./Testominals.css";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading, Subheading as SubheadingBase } from "../Misk/Headings";
 import { Container, ContentWithPaddingXl } from "../Misk/Layout";
-import loveIllustrationImageSrc from "../../Assets/PNG/ferrari.png";
+import loveIllustrationImageSrc from "../../Assets/PNG/ferrariB.webp";
 import { ReactComponent as StarIconBase } from "../../Assets/SVG/star-icon.svg";
 import { ReactComponent as ArrowLeftIcon } from "../../Assets/SVG/arrow-left-3-icon.svg";
 import { ReactComponent as ArrowRightIcon } from "../../Assets/SVG/arrow-right-3-icon.svg";

@@ -4,7 +4,7 @@ import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import ContactUsForm from "./Header";
 import ContactDetails from "./ThreeColContactDetails.js";
-
+import Map from "./map";
 const Address = tw.span`leading-relaxed`;
 const AddressLine = tw.span`block`;
 const Email = tw.span`text-sm mt-6 block text-gray-500`;
@@ -96,6 +96,8 @@ export default () => {
           },
         ]}
       />
+
+      <Map />
     </div>
   );
 };

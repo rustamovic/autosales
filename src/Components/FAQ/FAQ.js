@@ -5,7 +5,6 @@ import styled, { css } from "styled-components/macro"; //eslint-disable-line
 import { Container, ContentWithPaddingXl } from "../Misk/Layout";
 import { SectionHeading, Subheading as SubheadingBase } from "../Misk/Headings";
 import { ReactComponent as ChevronDownIcon } from "feather-icons/dist/icons/chevron-down.svg";
-
 const PrimaryBackgroundContainer = tw(
   Container
 )` px-8 bg-blue-500 text-gray-100`;
@@ -150,18 +149,20 @@ export default ({
     return null;
   });
   return (
-    <PrimaryBackgroundContainer style={{ paddingTop: "65px" }}>
-      <ContentWithPaddingXl>
-        <HeadingContainer>
-          {subheading && <Subheading>{subheading}</Subheading>}
-          <Heading>{heading}</Heading>
-          <Description>{description}</Description>
-        </HeadingContainer>
-        <FaqsContainer>
-          <FaqsColumn>{faqCol1}</FaqsColumn>
-          <FaqsColumn>{faqCol2}</FaqsColumn>
-        </FaqsContainer>
-      </ContentWithPaddingXl>
-    </PrimaryBackgroundContainer>
+    <div>
+      <PrimaryBackgroundContainer style={{ paddingTop: "65px" }}>
+        <ContentWithPaddingXl>
+          <HeadingContainer>
+            {subheading && <Subheading>{subheading}</Subheading>}
+            <Heading>{heading}</Heading>
+            <Description>{description}</Description>
+          </HeadingContainer>
+          <FaqsContainer>
+            <FaqsColumn>{faqCol1}</FaqsColumn>
+            <FaqsColumn>{faqCol2}</FaqsColumn>
+          </FaqsContainer>
+        </ContentWithPaddingXl>
+      </PrimaryBackgroundContainer>
+    </div>
   );
 };
