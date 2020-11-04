@@ -6,7 +6,7 @@ import {
   SectionHeading,
   Subheading as SubheadingBase,
 } from "../Misk/Headings.js";
-import EmailIllustrationSrc from "../../Assets/SVG/email-illustration.svg";
+import EmailIllustrationSrc from "../../Assets/PNG/bmww.webp";
 const PrimaryButton = tw.button`px-8 py-3 font-bold rounded bg-blue-500 text-gray-100 hocus:bg-blue-700 hocus:text-gray-200 focus:shadow-outline focus:outline-none transition duration-300`;
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24`;
@@ -28,13 +28,13 @@ const TextContent = tw.div`lg:py-8 text-center md:text-left`;
 const Subheading = tw(SubheadingBase)`text-center md:text-left`;
 const Heading = tw(
   SectionHeading
-)`mt-4 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
+)`mt-4 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight text-gray-700`;
 const Description = tw.p`mt-4 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-gray-500`;
 
 const Form = tw.form`mt-8 md:mt-10 text-sm flex flex-col lg:flex-row`;
 const Input = tw.a`border-2 px-5 py-3 rounded focus:outline-none font-medium transition duration-300 hocus:border-blue-500`;
 
-const SubmitButton = tw(PrimaryButton)`inline-block lg:ml-6 mt-6 lg:mt-0`;
+const SubmitButton = tw(PrimaryButton)`inline-block lg:ml-6 mt-6 lg:mt-0 `;
 
 export default ({
   subheading = "Contact Us",

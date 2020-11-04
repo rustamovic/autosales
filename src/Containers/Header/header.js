@@ -47,7 +47,7 @@ class header extends Component {
     return (
       <div>
         <div className="flyout">
-          <MDBNavbar color="indigo" dark expand="md" fixed="top" scrolling>
+          <MDBNavbar id="navcol" dark expand="md" fixed="top" scrolling>
             <MDBNavbarBrand href="/" className="py-0 font-weight-bold">
               <h2 style={{ height: "2.5rem", width: "2.5rem" }}>
                 <img src={logo} alt="qwerty" height="10" />

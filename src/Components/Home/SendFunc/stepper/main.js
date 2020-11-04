@@ -66,7 +66,7 @@ class Career extends Component {
       postCode: this.state.ZIP,
       SellDate: this.state.DateToSell,
       expectedPrice: this.state.offerPrice,
-      // Photos: this.state.files,
+      Photos: this.state.files,
       // messagee: this.state.message,
     };
     axios

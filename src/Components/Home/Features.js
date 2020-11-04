@@ -12,7 +12,7 @@ import SupportIconImage from "../../Assets/SVG/support-icon.svg";
 import ShieldIconImage from "../../Assets/SVG/shield-icon.svg";
 import CustomizeIconImage from "../../Assets/SVG/customize-icon.svg";
 const SectionDescription = tw.p`mt-4 text-sm md:text-base lg:text-lg font-medium leading-relaxed text-blue-700 max-w-xl`;
-const Container = tw.div`relative bg-blue-500  px-8 text-gray-100`;
+const Container = tw.div`relative px-8 text-gray-100`;
 const ThreeColumnContainer = styled.div`
   ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-lg mx-auto py-20 md:py-24`}
 `;
@@ -78,7 +78,7 @@ export default ({
   if (!cards) cards = defaultCards;
 
   return (
-    <Container>
+    <Container id="GColor">
       <ThreeColumnContainer>
         {subheading && <Subheading>{subheading}</Subheading>}
         <Heading>{heading}</Heading>

@@ -11,3 +11,6 @@
   flex-direction: column;
   justify-content: space-between;
 }
+#navcol {
+  background-color: #7b88ab;
+}

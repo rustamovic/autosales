@@ -15,7 +15,7 @@ import "bootstrap-css-only/css/bootstrap.min.css";
 const ContactPage = () => {
   return (
     <MDBContainer className="my-3">
-      <h2 className="h1-responsive font-weight-bold text-center mb-5">
+      <h2 className="h1-responsive font-weight-bold text-center mb-5 ">
         Contact us
       </h2>
       <p className="text-center w-responsive mx-auto pb-5 text-primary">

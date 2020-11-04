@@ -5,14 +5,14 @@ import tw from "twin.macro";
 import { css } from "styled-components/macro";
 import Feature from "./feature";
 import "./Whowe.css";
-import DesignIllustration from "../../../Assets/PNG/lambo.png";
+import DesignIllustration from "../../../Assets/PNG/mers.png";
 import CustomersLogoStripImage from "../../../Assets/PNG/customers-logo-strip.png";
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col lg:flex-row lg:items-center max-w-screen-xl mx-auto py-20 md:py-24`;
 const LeftColumn = tw.div`relative lg:w-5/12 text-center max-w-lg mx-auto lg:max-w-none lg:text-left`;
 const RightColumn = tw.div`relative mt-12 lg:mt-0 flex-1 flex flex-col justify-center lg:self-end`;
-const Heading = tw.h1`font-bold text-3xl md:text-3xl lg:text-4xl xl:text-5xl text-blue-700 leading-tight`;
-const Paragraph = tw.p`my-5 lg:my-8 text-base xl:text-lg`;
+const Heading = tw.h1`font-bold text-3xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-700 leading-tight`;
+const Paragraph = tw.p`my-5 lg:my-8 text-base xl:text-lg text-blue-500`;
 const Actions = styled.div`
   ${tw`relative max-w-md text-center mx-auto lg:mx-0`}
   input {
@@ -42,7 +42,7 @@ class top extends Component {
             <TwoColumn>
               <LeftColumn>
                 <Heading>
-                  Get Your Next Car <span tw="text-blue-500">Delivered</span>
+                  Get Your Next Car <span tw="text-gray-600">Delivered</span>
                 </Heading>
                 <Paragraph>
                   Great Prices. Better Cars. Delivered to You.

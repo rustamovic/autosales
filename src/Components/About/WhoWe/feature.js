@@ -12,7 +12,9 @@ const SectionDescription = tw.p`mt-4 text-sm md:text-base lg:text-lg font-medium
 const ContentWithPaddingXl = tw.div`max-w-screen-xl mx-auto py-10 lg:py-10`;
 const Container = tw(ContainerBase)` text-blue-600 px-8`;
 const HeadingContainer = tw.div``;
-const Heading = tw(SectionHeading)`sm:text-3xl md:text-4xl lg:text-5xl`;
+const Heading = tw(
+  SectionHeading
+)`sm:text-3xl md:text-4xl lg:text-5xl text-gray-600`;
 const Subheading = tw(SubheadingBase)`text-blue-600 text-center`;
 const Description = tw(
   SectionDescription

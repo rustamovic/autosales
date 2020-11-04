@@ -9,7 +9,7 @@ import { ReactComponent as LinkedinIcon } from "../../Assets/SVG/linkedin-icon.s
 import { ReactComponent as GithubIcon } from "../../Assets/SVG/facebook-icon.svg";
 const SectionDescription = tw.p`mt-4 text-sm md:text-base lg:text-lg font-medium leading-relaxed text-blue-500 max-w-xl`;
 const HeadingContainer = tw.div``;
-const Heading = tw(SectionHeading)``;
+const Heading = tw(SectionHeading)`text-gray-600`;
 const Subheading = tw(SubheadingBase)`text-center mb-3`;
 const Description = tw(SectionDescription)`mx-auto text-center`;
 const Cards = tw.div`flex flex-wrap flex-row justify-center sm:max-w-2xl lg:max-w-5xl mx-auto`;

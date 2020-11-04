@@ -15,7 +15,7 @@ const Heading = tw(SectionHeading)``;
 const Description = tw(SectionDescription)`mx-auto text-center text-gray-300`;
 const FaqsContainer = tw.div`mt-10 sm:mt-16 w-full flex-1 lg:flex justify-between items-start max-w-screen-lg mx-auto`;
 const FaqsColumn = tw.div`w-full lg:max-w-lg lg:mr-12 last:mr-0`;
-const Faq = tw.div`select-none cursor-pointer border-b-2 border-blue-300 hover:border-blue-500 transition-colors duration-300 py-6`;
+const Faq = tw.div`select-none cursor-pointer border-b-2 border-white hover:border-gray-400 transition-colors duration-300 py-6`;
 const Question = tw.div`flex justify-between items-center`;
 const QuestionText = tw.div`text-sm sm:text-lg font-semibold tracking-wide`;
 const QuestionToggleIcon = styled(motion.span)`
@@ -150,7 +150,7 @@ export default ({
   });
   return (
     <div>
-      <PrimaryBackgroundContainer style={{ paddingTop: "65px" }}>
+      <PrimaryBackgroundContainer id="GColor" style={{ paddingTop: "65px" }}>
         <ContentWithPaddingXl>
           <HeadingContainer>
             {subheading && <Subheading>{subheading}</Subheading>}

@@ -4,13 +4,13 @@ import { Container as ContainerBase } from "../Misk/Layout";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import illustration from "../../Assets/PNG/lambo.png";
+import illustration from "../../Assets/PNG/pradoG.png";
 import logo from "../../Assets/SVG/logo.svg";
 import { ReactComponent as LoginIcon } from "feather-icons/dist/icons/log-in.svg";
 import { makeLogin } from "../../Redux/Auth/AuthActions";
 const Container = tw(
   ContainerBase
-)`min-h-screen bg-blue-500 text-white font-medium flex justify-center`;
+)`min-h-screen text-white font-medium flex justify-center`;
 const Content = tw.div`max-w-screen-xl m-0 sm:mx-20 sm:my-16 bg-white text-gray-900 shadow sm:rounded-lg flex justify-center flex-1`;
 const MainContainer = tw.div`lg:w-1/2 xl:w-5/12 p-6 sm:p-12`;
 const LogoLink = tw.a``;
@@ -61,12 +61,12 @@ const Login = ({
 
   console.log("post:", posts);
   return (
-    <Container style={{ paddingTop: "65px" }}>
+    <Container id="GColor" style={{ paddingTop: "65px" }}>
       <Content>
         <MainContainer>
-          <LogoLink href={logoLinkUrl}>
-            <LogoImage src={logo} />
-          </LogoLink>
+          {/* <LogoLink href={logoLinkUrl}> */}
+          <LogoImage src={logo} />
+          {/* </LogoLink> */}
           <MainContent>
             <Heading>{headingText}</Heading>
             <FormContainer>
