@@ -18,7 +18,7 @@ import "bootstrap-css-only/css/bootstrap.min.css";
 
 // import Brand from "../../Assets/logo-2.png";
 
-class header extends Component {
+class Header extends Component {
   state = {
     collapseID: "",
   };
@@ -181,4 +181,4 @@ class header extends Component {
     );
   }
 }
-export default header;
+export default React.memo(Header);
