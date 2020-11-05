@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-
+import Loader from './Loader/Loading';
 import { Footer } from "../Containers/Footer/footer";
 import Header from "../Containers/Header/header";
 const Home = lazy(() => import("../Components/Home/Home"));
@@ -22,7 +22,7 @@ const Routes = () => {
           fallback={
             <>
               <Header />
-              <p>Loading.... shu yerga loading o'rnating</p>
+              <Loader/>
             </>
           }
         >
