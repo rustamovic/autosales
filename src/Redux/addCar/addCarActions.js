@@ -13,7 +13,7 @@ export const addCarServer = (
   carColor,
   key,
   vehicleCondition,
-  transmission,
+  transmision,
   sellDate,
   expectedPrice,
   firstName,
@@ -34,7 +34,7 @@ export const addCarServer = (
     formData.append("carColor", carColor);
     formData.append("key", key);
     formData.append("VehicleCondition", vehicleCondition);
-    formData.append("transmission", transmission);
+    formData.append("transmision", transmision);
     formData.append("SellDate", sellDate);
     formData.append("expectedPrice", expectedPrice);
     formData.append("FirstName", firstName);
