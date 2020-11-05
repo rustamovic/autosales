@@ -1,5 +1,6 @@
 import React, { useEffect, useCallback } from "react";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { createSelector } from "reselect";
 import { Container as ContainerBase } from "../Misk/Layout";
 import tw from "twin.macro";
 import styled from "styled-components";
@@ -39,6 +40,16 @@ const IllustrationImage = styled.div`
   ${tw`m-12 xl:m-16 w-full max-w-sm bg-contain bg-center bg-no-repeat`}
 `;
 
+const auth = (state) => state.auth;
+
+const beginLoginMine = createSelector([auth], (state) => state.beginLogin);
+
+const succesLoginMine = createSelector([auth], (state) => state.succesLogin);
+
+const failureLoginMine = createSelector([auth], (state) => state.failureLogin);
+
+const postsMine = createSelector([auth], (state) => state.posts);
+
 const Login = ({
   logoLinkUrl = "#",
   illustrationImageSrc = illustration,
@@ -47,17 +58,17 @@ const Login = ({
   SubmitButtonIcon = LoginIcon,
   forgotPasswordUrl = "#",
   signupUrl = "#",
-  makeLogin,
-  beginLogin,
-  successLogin,
-  failureLogin,
-  posts,
 }) => {
-  const fetchData = useCallback(() => makeLogin());
+  const dispatch = useDispatch();
+  const fetchData = useCallback(() => dispatch(makeLogin()), [dispatch]);
+
+  const beginLogin = useSelector(beginLoginMine);
+  const posts = useSelector(postsMine);
+  console.log(beginLogin);
 
   useEffect(() => {
     fetchData();
-  }, [makeLogin]);
+  }, [fetchData]);
 
   console.log("post:", posts);
   return (
@@ -93,13 +104,4 @@ const Login = ({
   );
 };
 
-const mapState = (state) => {
-  return {
-    beginLogin: state.auth.beginLogin,
-    succesLogin: state.auth.succesLogin,
-    failureLogin: state.auth.failureLogin,
-    posts: state.auth.posts,
-  };
-};
-
-export default connect(mapState, { makeLogin })(Login);
+export default Login;
