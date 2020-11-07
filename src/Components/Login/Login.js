@@ -1,6 +1,7 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createSelector } from "reselect";
+import { useHistory, useLocation } from "react-router-dom";
 import { Container as ContainerBase } from "../Misk/Layout";
 import tw from "twin.macro";
 import styled from "styled-components";
@@ -59,18 +60,30 @@ const Login = ({
   forgotPasswordUrl = "#",
   signupUrl = "#",
 }) => {
+  const [email, setEmail] = useState("");
   const dispatch = useDispatch();
-  const fetchData = useCallback(() => dispatch(makeLogin()), [dispatch]);
+  const fetchLogin = (e) => {
+    e.preventDefault();
+    dispatch(makeLogin(email));
+  };
 
-  const beginLogin = useSelector(beginLoginMine);
+  const history = useHistory();
+  const location = useLocation();
+
+  // const beginLogin = useSelector(beginLoginMine);
+  const successLogin = useSelector(succesLoginMine);
   const posts = useSelector(postsMine);
-  console.log(beginLogin);
-
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
 
   console.log("post:", posts);
+
+  if (successLogin) {
+    if (location.state) {
+      history.replace(location.state.from.pathname);
+    } else {
+      history.replace("/");
+    }
+  }
+
   return (
     <Container id="GColor" style={{ paddingTop: "65px" }}>
       <Content>
@@ -85,9 +98,13 @@ const Login = ({
               <DividerTextContainer>
                 <DividerText>Sign in with your e-mail</DividerText>
               </DividerTextContainer>
-              <Form>
-                <Input type="email" placeholder="Email" />
-                <Input type="password" placeholder="Password" />
+              <Form onSubmit={fetchLogin}>
+                <Input
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  type="email"
+                  placeholder="Email"
+                />
                 <SubmitButton type="submit">
                   <SubmitButtonIcon className="icon" />
                   <span className="text">{submitButtonText}</span>
@@ -105,3 +122,5 @@ const Login = ({
 };
 
 export default Login;
+
+// <Input type="password" placeholder="Password" />
