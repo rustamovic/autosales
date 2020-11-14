@@ -21,6 +21,7 @@
     "material-ui-dropzone": "^3.5.0",
     "mdbreact": "^4.27.0",
     "react": "^16.13.1",
+    "react-app-rewired": "^2.1.6",
     "react-dom": "^16.13.1",
     "react-google-font-loader": "^1.1.0",
     "react-hooks-helper": "^1.6.0",
@@ -35,13 +36,15 @@
     "reselect": "^4.0.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.2.0",
+    "sw-precache": "^5.2.1",
     "twin.macro": "^1.10.0",
     "typescript": "^4.0.3",
+    "workbox-webpack-plugin": "^5.1.4",
     "yup": "^0.29.3"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && sw-precache --config=sw-precache-config.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start-sw": "http-server ./build"
