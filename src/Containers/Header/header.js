@@ -100,6 +100,14 @@ class Header extends Component {
                 <MDBNavItem>
                   <MDBNavLink
                     onClick={this.closeCollapse("mainNavbarCollapse")}
+                    to="/faq"
+                  >
+                    <strong>Test</strong>
+                  </MDBNavLink>
+                </MDBNavItem>
+                <MDBNavItem>
+                  <MDBNavLink
+                    onClick={this.closeCollapse("mainNavbarCollapse")}
                     to="/contact"
                   >
                     <strong>Contact</strong>
