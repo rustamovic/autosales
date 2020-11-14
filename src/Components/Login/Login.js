@@ -121,6 +121,6 @@ const Login = ({
   );
 };
 
-export default Login;
+export default React.memo(Login);
 
 // <Input type="password" placeholder="Password" />
