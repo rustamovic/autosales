@@ -4,7 +4,7 @@ module.exports = {
     'build/static/js/**.js'
   ],
   swFilePath: './build/service-worker.js',
-  templateFilePath: './service-worker.tmpl',
+  templateFilePath: './service-worker.js',
   stripPrefix: 'build/',
   handleFetch: false,
   runtimeCaching: [{
