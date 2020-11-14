@@ -5,12 +5,12 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
+    <meta name="description" content="AutoSales Incorporation" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta
-      name="description"
-      content="AutoSales Incorporation"
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
     />
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -32,14 +32,17 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('/service-worker.js');
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker.register("/service-worker.js");
         });
       }
 
-      if((navigator.standalone === true) || (window.matchMedia('(display-mode: standalone)').matches)){
-
+      if (window.matchMedia("(display-mode: standalone)").matches) {
+        isPWAinBrowser = false;
+      } else if ("standalone" in navigator) {
+        // useful for iOS < 11.3
+        isPWAinBrowser = !navigator.standalone;
       }
     </script>
     <!--
