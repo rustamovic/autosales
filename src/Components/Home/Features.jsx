@@ -6,7 +6,7 @@ import { css } from "styled-components/macro";
 import {
   SectionHeading,
   Subheading as SubheadingBase,
-} from "../Misk/Headings.js";
+} from "../Misk/Headings.jsx";
 import defaultCardImage from "../../Assets/SVG/shield-icon.svg";
 import SupportIconImage from "../../Assets/SVG/support-icon.svg";
 import ShieldIconImage from "../../Assets/SVG/shield-icon.svg";

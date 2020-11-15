@@ -5,7 +5,7 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import {
   SectionHeading,
   Subheading as SubheadingBase,
-} from "../Misk/Headings.js";
+} from "../Misk/Headings.jsx";
 import EmailIllustrationSrc from "../../Assets/PNG/bmww.webp";
 const PrimaryButton = tw.button`px-8 py-3 font-bold rounded bg-blue-500 text-gray-100 hocus:bg-blue-700 hocus:text-gray-200 focus:shadow-outline focus:outline-none transition duration-300`;
 const Container = tw.div`relative`;

@@ -6,7 +6,7 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import {
   SectionHeading,
   Subheading as SubheadingBase,
-} from "../Misk/Headings.js";
+} from "../Misk/Headings.jsx";
 
 // import { ReactComponent as SvgDecoratorBlob3 } from "images/svg-decorator-blob-3.svg";
 const SectionDescription = tw.p`mt-4 text-sm md:text-base lg:text-lg font-medium leading-relaxed text-blue-500 max-w-xl`;

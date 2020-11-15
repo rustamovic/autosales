@@ -15,6 +15,7 @@ const Policy = lazy(() => import("../Components/Conditions/PrivacyPolicy"));
 const Stepper = lazy(() => import("../Components/Home/SendFunc/stepper/main"));
 const History = lazy(() => import("../Components/History/Components"));
 const FullHistory = lazy(() => import("../Components/History/FullC"));
+const MapMine = lazy(() => import("../Components/MapMine"))
 
 const Routes = () => {
   return (
@@ -41,6 +42,7 @@ const Routes = () => {
             <Route exact path="/privacyvspolicy" component={Policy} />
             <Route exact path="/stepper" component={Stepper} />
             <Route exact path="/history" component={History} />
+            <Route exact path="/map" component={MapMine} />
             <Route exact path="/Fullhistory" component={FullHistory} />
             <Route path="*" component={NotFound} />
           </Switch>
