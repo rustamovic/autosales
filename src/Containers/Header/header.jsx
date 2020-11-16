@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import logo from "../../Assets/SVG/logo.svg";
+import logo from "../../Assets/logo512.png";
 import {
   MDBNavbar,
   MDBNavbarBrand,

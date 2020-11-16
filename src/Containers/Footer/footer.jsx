@@ -10,7 +10,7 @@ import {
   ThemeProvider,
   createMuiTheme,
 } from "@material-ui/core/styles";
-import logo from "../../Assets/SVG/logo.svg";
+import logo from "../../Assets/dealer-logo.png";
 
 import { FontProvider } from "./Fonts/Font";
 import { Font } from "./Fonts/Font";
@@ -106,7 +106,7 @@ export const Footer = React.memo(function ArcAppFooter() {
                 <Box
                   component={"img"}
                   mt={-3}
-                  width={120}
+                  // width={120}
                   height={64}
                   src={logo}
                   alt=""
