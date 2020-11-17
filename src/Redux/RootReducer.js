@@ -6,11 +6,13 @@ import addCarReducer from "./addCar/addCarReducer";
 import adminLoginReducer from "./adminLogin/adminLoginReducer";
 import sellerReducer from "./seller/sellerReducer";
 import userProfileReducer from "./userProfile/userProfileReducer";
+import VinNumberReducer from "./VinNumber/VinNumberReducer";
 
 export const rootReducer = combineReducers({
   auth: AuthReducer,
   addCar: addCarReducer,
   admin: adminLoginReducer,
   seller: sellerReducer,
-  userProfile: userProfileReducer
+  userProfile: userProfileReducer,
+  vinNumber: VinNumberReducer
 });
