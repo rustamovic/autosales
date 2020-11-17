@@ -4,7 +4,7 @@ import tw from "twin.macro";
 //eslint-disable-next-line
 import { css } from "styled-components/macro";
 import "./Testominals.css";
-import DesignIllustration from "../../Assets/PNG/audi.png";
+import DesignIllustration from "../../Assets/PNG/tesla.png";
 import CustomersLogoStripImage from "../../Assets/PNG/customers-logo-strip.png";
 import Features from "./Features";
 import Testominals from "./Testominal";

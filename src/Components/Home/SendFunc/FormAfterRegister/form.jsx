@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { MDBCol, MDBContainer, MDBRow } from "mdbreact";
 import axios from "axios";
 import { DropzoneArea } from "material-ui-dropzone";
-import './main.css';
+import '../stepper/main';
 
 class Career extends Component {
   state = {
@@ -277,51 +277,7 @@ class Career extends Component {
                   required
                 />
                 <hr />
-                <h3 className="h3-responsive py-2">Your Information</h3>
-                <div className="form-row">
-                  <div className="form-group col-md-6">
-                    <label for="namee">Your first name</label>
-                    <input
-                      value={Fname}
-                      name="Fname"
-                      onChange={this.changeHandler}
-                      type="text"
-                      id="namee"
-                      className="form-control"
-                      placeholder="First name"
-                      required
-                    />
-                  </div>
-
-                  <div className="form-group col-md-6">
-                    <label for="lnamee">Your last name</label>
-                    <input
-                      value={Lname}
-                      name="Lname"
-                      onChange={this.changeHandler}
-                      type="text"
-                      id="lnamee"
-                      className="form-control"
-                      placeholder="Last name"
-                      required
-                    />
-                  </div>
-                </div>
-                <div className="form-row">
-                  <div className="form-group col-md-12">
-                    <label for="eemail">Your e-mail address</label>
-                    <input
-                      value={email}
-                      name="email"
-                      onChange={this.changeHandler}
-                      type="email"
-                      className="form-control"
-                      id="eemail"
-                      placeholder="Email address"
-                      required
-                    />
-                  </div>
-                </div>
+                <h3 className="h3-responsive py-2">Additional Information</h3>
                 <div className="form-row">
                   <div className="form-group col-md-6">
                     <label for="phone">Your phone number</label>
@@ -349,7 +305,7 @@ class Career extends Component {
                       required
                     />
                   </div>
-                 
+                  
                 </div>
                 <div className="form-row">
                 <div className="form-group col-md-6">
@@ -416,42 +372,3 @@ class Career extends Component {
   }
 }
 export default Career;
-{
-  /* <div className="form-row">
-                  <div className="form-group col-md-6">
-                    <input
-                      value={cvURL}
-                      name="cvURL"
-                      onChange={this.changeHandler}
-                      type="text"
-                      className="form-control"
-                      id="inputCity"
-                      placeholder="Enter portfolio URL"
-                    />
-                  </div>
-                  <div className="form-group col-md-6">
-                    <input
-                      type="file"
-                      className="custom-file-input"
-                      id="validatedCustomFile"
-                    />
-                    <label
-                      className="custom-file-label"
-                      htmlFor="validatedCustomFile"
-                    >
-                      Upload CV/Portfolio
-                    </label>
-                  </div>
-                </div> */
-}
-{
-  /* <input
-                      value={DateToSell}
-                      name="email"
-                      onChange={this.changeHandler}
-                      type="email"
-                      className="form-control"
-                      id="inputEmail4"
-                      placeholder="When are you looking to sell your car? (optional)"
-                    /> */
-}

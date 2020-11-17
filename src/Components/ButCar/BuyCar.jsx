@@ -3,7 +3,7 @@ import tw from "twin.macro";
 //eslint-disable-next-line
 import { css } from "styled-components/macro";
 import "./BuyCar.css";
-import DesignIllustration from "../../Assets/PNG/tesla.png";
+import DesignIllustration from "../../Assets/PNG/audi.png";
 import Func from "../Home/SendFunc/VIN";
 // import AnimationR from "../AnimationRevealPage";
 const Container = tw.div`relative`;

@@ -9,9 +9,9 @@ import {
 import EmailIllustrationSrc from "../../Assets/PNG/bmww.webp";
 const PrimaryButton = tw.button`px-8 py-3 font-bold rounded bg-blue-500 text-gray-100 hocus:bg-blue-700 hocus:text-gray-200 focus:shadow-outline focus:outline-none transition duration-300`;
 const Container = tw.div`relative`;
-const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24`;
+const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
-const ImageColumn = tw(Column)`md:w-5/12 flex-shrink-0 h-8 md:h-auto`;
+const ImageColumn = tw(Column)`flex justify-center lg:justify-end items-center`;
 const TextColumn = styled(Column)((props) => [
   tw`md:w-7/12 mt-16 md:mt-0`,
   props.textOnLeft
@@ -19,10 +19,10 @@ const TextColumn = styled(Column)((props) => [
     : tw`md:ml-12 lg:ml-16 md:order-last`,
 ]);
 
-const Image = styled.div((props) => [
-  `background-image: url("${props.imageSrc}");`,
-  tw`rounded bg-contain bg-no-repeat bg-center h-full`,
-]);
+// const Image = styled.div((props) => [
+//   `background-image: url("${props.imageSrc}");`,
+//   tw`rounded bg-contain bg-no-repeat bg-center h-full`,
+// ]);
 const TextContent = tw.div`lg:py-8 text-center md:text-left`;
 
 const Subheading = tw(SubheadingBase)`text-center md:text-left`;
@@ -56,7 +56,11 @@ export default ({
     <Container>
       <TwoColumn>
         <ImageColumn>
-          <Image imageSrc={EmailIllustrationSrc} />
+        <img
+                  tw="min-w-0 w-full max-w-lg xl:max-w-3xl"
+                  src={EmailIllustrationSrc}
+                  alt="Design Illustration"
+                />
         </ImageColumn>
         <TextColumn textOnLeft={textOnLeft}>
           <TextContent>
