@@ -5,6 +5,7 @@ import { css } from "styled-components/macro";
 import "./BuyCar.css";
 import DesignIllustration from "../../Assets/PNG/audi.png";
 import Func from "../Home/SendFunc/VIN";
+import LowerPart from '../LowerPart/LowerPart'
 // import AnimationR from "../AnimationRevealPage";
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col lg:flex-row lg:items-center max-w-screen-xl mx-auto py-20 md:py-24`;
@@ -39,6 +40,7 @@ export default ({ roundedHeaderButton }) => {
           </TwoColumn>
         </Container>
       </div>
+      <LowerPart/>
     </div>
   );
 };
