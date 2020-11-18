@@ -43,9 +43,9 @@ const CardLinks = styled.div`
 `;
 
 export default ({
-  heading = "Meet These Fine Folks.",
+  heading = "Meet the Trust Auto Team!",
   subheading = "Our Team",
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  description = "At Trust Auto, we are not just a team. We are a family. Not only do we consider our employees as part of our family, but also our customers. We don’t treat you like another number, we treat you like family because we care. Let our friendly staff help you today. With our experience and our commitment to our customers, you will always have a great experience at Trust Auto.",
   cards = [
     {
       imageSrc:

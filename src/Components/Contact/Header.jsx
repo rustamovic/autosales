@@ -44,7 +44,7 @@ export default ({
       <wbr /> with us.
     </>
   ),
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  description = "When you need to get in touch with us, all you have to do is utilize any of the resources that we have for you on this page. You can fill out the form at the bottom to send us an email, give one of those numbers a call to get us on the phone, or use the map to see exactly where we are located in Sykesville. We hope to see or hear from you very soon, and we can’t wait to earn your trust.",
   submitButtonText = "Call/Contact Us",
   formAction = "#",
   formMethod = "get",
@@ -68,8 +68,8 @@ export default ({
             <Heading>{heading}</Heading>
             <Description>{description}</Description>
             <Form action={formAction} method={formMethod}>
-              <Input href="tel:+99899330031003" name="phone">
-                +998(33)003-1-003
+              <Input href="tel:(443) 552-3131" name="phone">
+              (443) 552-3131
               </Input>
               <SubmitButton disabled type="submit">
                 {submitButtonText}

@@ -11,7 +11,7 @@ import {
   createMuiTheme,
 } from "@material-ui/core/styles";
 import logo from "../../Assets/dealer-logo.png";
-
+import {MDBContainer} from 'mdbreact'
 import { FontProvider } from "./Fonts/Font";
 import { Font } from "./Fonts/Font";
 import { ColumnToRow, Item } from "@mui-treasury/components/flex";
@@ -95,12 +95,14 @@ export const Footer = React.memo(function ArcAppFooter() {
   const scrollToTop = () => window.scrollTo(0, 0);
   const classes = useStyles();
   return (
+
     <FontProvider
       fonts={[{ font: "Rambla", weights: [400, 700] }, { font: "Nunito" }]}
     >
       <Box width={"100%"}>
         <Box px={2} py={10} className={classes.middle}>
           <Container disableGutters>
+          <MDBContainer>
             <Grid container spacing={4}>
               <Grid item xs={12} md={4} lg={3}>
                 <Box
@@ -113,91 +115,68 @@ export const Footer = React.memo(function ArcAppFooter() {
                   borderRadius={12}
                 />
                 <Typography className={classes.info}>
-                  <Font index={1}>Auto Sales Inc., 830-1183 NY US 10220</Font>
+                  <Font index={1}>TRUST AUTO Inc., 1551 W Old Liberty Rd, Sykesville, MD 21784</Font>
                 </Typography>
 
                 <Typography className={classes.info}>
-                  <Font index={1}>example@email.com</Font>
+                  <Font index={1}><a href="tel:(443) 552-3131">(443) 552-3131</a></Font>
                 </Typography>
               </Grid>
               <Grid item xs={12} md={8} lg={6}>
                 <Grid container spacing={2}>
-                  <Grid item xs={6} sm={4}>
-                    <CategoryProvider useStyles={useMagCategoryMenuStyles}>
-                      <CategoryTitle>
-                        <Font>Products</Font>
-                      </CategoryTitle>
-                      <CategoryItem>
-                        <Font index={1}>Snowflake Free</Font>
-                      </CategoryItem>
-                      <CategoryItem>
-                        <Font index={1}>Coloristic</Font>
-                      </CategoryItem>
-                      <CategoryItem>
-                        <Font index={1}>Summer free</Font>
-                      </CategoryItem>
-                      <CategoryItem>
-                        <Font index={1}>Lucky store</Font>
-                      </CategoryItem>
-                    </CategoryProvider>
-                  </Grid>
-                  <Grid item xs={6} sm={4}>
+                  <Grid item xs={6} sm={6}>
                     <CategoryProvider useStyles={useMagCategoryMenuStyles}>
                       <CategoryTitle>
                         <Font>Information</Font>
                       </CategoryTitle>
-                      <CategoryItem>
+                      {/* <CategoryItem>
                         <Font index={1}>
                           <Link to="" onClick={scrollToTop()}>
                             License
                           </Link>
                         </Font>
-                      </CategoryItem>
+                      </CategoryItem> */}
                       <CategoryItem>
                         <Font index={1}>
-                          <Link to="">Privacy Policy</Link>
+                          <Link to="/privacyvspolicy" onClick={scrollToTop}>Privacy Policy</Link>
                         </Font>
                       </CategoryItem>
                       <CategoryItem>
                         <Font index={1}>
-                          <Link to="">Terms of Service</Link>
+                          <Link to="/termsofservice" onClick={scrollToTop}>Terms of Service</Link>
                         </Font>
                       </CategoryItem>
                       <CategoryItem>
                         <Font index={1}>
-                          <Link to="" onClick={scrollToTop()}>
+                          <Link to="/faq" onClick={scrollToTop()}>
                             FAQ
                           </Link>
                         </Font>
                       </CategoryItem>
                     </CategoryProvider>
                   </Grid>
-                  <Grid item xs={6} sm={4}>
+                  <Grid item xs={6} sm={6}>
                     <CategoryProvider useStyles={useMagCategoryMenuStyles}>
                       <CategoryTitle>
-                        <Font>
-                          <Link to="" onClick={scrollToTop()}>
-                            About
-                          </Link>
-                        </Font>
+                        About Us
                       </CategoryTitle>
                       <CategoryItem>
                         <Font index={1}>
-                          <Link to="" onClick={scrollToTop()}>
+                          <Link to="/contact" onClick={scrollToTop()}>
                             Contact
                           </Link>
                         </Font>
                       </CategoryItem>
                       <CategoryItem>
                         <Font index={1}>
-                          <Link to="" onClick={scrollToTop()}>
+                          <Link to="/about" onClick={scrollToTop()}>
                             Team
                           </Link>
                         </Font>
                       </CategoryItem>
-                      <CategoryItem>
+                      {/* <CategoryItem>
                         <Font index={1}>Support</Font>
-                      </CategoryItem>
+                      </CategoryItem> */}
                     </CategoryProvider>
                   </Grid>
                 </Grid>
@@ -217,21 +196,21 @@ export const Footer = React.memo(function ArcAppFooter() {
                     <SocialLink brand={"LinkedIn"} />
                   </a>
                   <a
-                    href="https://twitter.com/"
+                    href="https://twitter.com/mdtrustauto"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <SocialLink brand={"Twitter"} />
                   </a>
                   <a
-                    href="https://www.facebook.com/"
+                    href="https://www.facebook.com/trustautoinc/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <SocialLink brand={"Facebook"} />
                   </a>
                   <a
-                    href="https://instagram.com/"
+                    href="https://instagram.com/trustautomd"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -240,6 +219,7 @@ export const Footer = React.memo(function ArcAppFooter() {
                 </SocialProvider>
               </Grid>
             </Grid>
+            </MDBContainer>
           </Container>
         </Box>
         <Container disableGutters>
@@ -280,13 +260,13 @@ export const Footer = React.memo(function ArcAppFooter() {
                     color={"textSecondary"}
                   >
                     <Font index={1}>
-                      Designed by Developers team of Auto Sales Inc. © Auto
-                      Sales Studio 2020 All right reserved
+                      Made by Developers team of TRUST AUTO Inc. © 2020 All right reserved
                     </Font>
                   </Typography>
                 </Box>
               </Item>
             </ColumnToRow>
+            
           </Container>
         </Box>
       </Box>

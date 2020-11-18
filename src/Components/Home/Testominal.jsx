@@ -72,7 +72,7 @@ export default ({
   imageShadow = false,
   subheading = "Testimonials",
   heading = "Our Clients Love Us.",
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam.",
+  description = "The best way to learn about any business is to talk to its customers. We believe that so strongly that we want to facilitate it.",
   textOnLeft = false,
   testimonials = [
     {
