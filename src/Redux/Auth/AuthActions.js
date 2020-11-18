@@ -13,7 +13,7 @@ export const makeLogin = (emailAddress) => async (dispatch) => {
     });
 
     dispatch({ type: SUCCESS_LOGIN, payload: response });
-    console.log(response, "response");
+    localStorage.setItem("token", response.data)
   } catch (err) {
     dispatch({ type: FAILURE_LOGIN });
   }

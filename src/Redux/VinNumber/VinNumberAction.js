@@ -8,10 +8,16 @@ export const getVinNumber = (vinNumber, history) => async dispatch => {
     dispatch({type: GET_VIN_NUMBER_BEGIN});
 
     try {
+        const token = localStorage.getItem("token")
         const response = await axios.get("https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/" + vinNumber + "?format=json");
 
         dispatch({type: GET_VIN_NUMBER_SUCCESS, payload: response.data.Results, myVin: vinNumber});
-        history.push('/form')
+
+        if(token){
+            history.push('/form')
+        }else {
+            history.push('/stepper')
+        }
     } catch (error) {
         dispatch({type: GET_VIN_NUMBER_FAIL})
     }

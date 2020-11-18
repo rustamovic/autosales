@@ -20,7 +20,9 @@ export const addCarServer = (
   lastName,
   emailAddress,
   phoneNumber,
-  postCode
+  postCode,
+  message,
+  history
 ) => async (dispatch) => {
   dispatch({ type: BEGIN_ADD_CAR });
 
@@ -42,9 +44,11 @@ export const addCarServer = (
     formData.append("emailAddress", emailAddress);
     formData.append("phoneNumber", phoneNumber);
     formData.append("postCode", postCode);
+    formData.append("message", message)
 
-    const response = await axiosInstance()("/api/sell", formData);
+    const response = await axiosInstance().post("/api/sell", formData);
     dispatch({ type: SUCCESS_ADD_CAR, payload: response });
+    history.push('/')
   } catch (error) {
     dispatch({ type: FAIL_ADD_CAR });
     console.log(error);

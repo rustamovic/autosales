@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
@@ -9,6 +9,8 @@ import "./main.css";
 import MyTextInput from "../FormAfterRegister/MyTextInput";
 import MySelect from "../FormAfterRegister/MySelect";
 import MyTextArea from "../FormAfterRegister/MyTextarea";
+import { addCarServer } from "../../../../Redux/addCar/addCarActions";
+import {useHistory} from 'react-router-dom';
 
 const vinNumber = (state) => state.vinNumber;
 
@@ -20,6 +22,9 @@ const Career = () => {
   const getVinData = useSelector(getVinDataMine);
   const myOwnVin = useSelector(myOwnVinMine);
   const [files, setFiles] = useState([]);
+
+  const dispatch = useDispatch();
+  const history = useHistory()
 
   const formData = {
     VINN: myOwnVin,
@@ -85,6 +90,29 @@ const Career = () => {
               })}
               onSubmit={(values) => {
                 console.log(values);
+                dispatch(
+                  addCarServer(
+                    files,
+                    values.VINN,
+                    values.trim,
+                    values.model,
+                    values.mileage,
+                    values.color,
+                    values.keys,
+                    values.condition,
+                    values.condition,
+                    values.transmission,
+                    values.DateToSell,
+                    values.offerPrice,
+                    values.Fname,
+                    values.Lname,
+                    values.email,
+                    values.phone,
+                    values.ZIP,
+                    values.message,
+                    history
+                  )
+                );
               }}
               validateOnBlur={true}
             >
@@ -350,7 +378,7 @@ const Career = () => {
                     onChange={formik.handleChange}
                   />
                   <button
-                    disabled={formik.isSubmitting}
+                    disabled={!formik.isSubmitting}
                     type="submit"
                     className="btn btn-primary btn-md"
                   >

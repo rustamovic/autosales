@@ -74,8 +74,6 @@ const Login = ({
   const successLogin = useSelector(succesLoginMine);
   const posts = useSelector(postsMine);
 
-  console.log("post:", posts);
-
   if (successLogin) {
     if (location.state) {
       history.replace(location.state.from.pathname);
