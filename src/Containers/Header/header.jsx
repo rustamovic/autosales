@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import logo from "../../Assets/logo512.png";
 import {useSelector, useDispatch} from 'react-redux';
 import {createSelector} from "reselect"; 
+import HistoryIcon from '@material-ui/icons/History';
+import ChatIcon from '@material-ui/icons/Chat';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {
   MDBNavbar,
   MDBNavbarBrand,
@@ -12,7 +15,12 @@ import {
   MDBNavLink,
   MDBTooltip,
   MDBIcon,
+  MDBDropdown,
+  MDBDropdownItem,
+  MDBDropdownToggle,
+  MDBDropdownMenu
 } from "mdbreact";
+import {Link} from 'react-router-dom'
 import "./header.css";
 import "mdbreact/dist/css/mdb.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -101,10 +109,21 @@ const Header = () => {
 
               {token || succesLogin ? (
                 <MDBNavItem>
-                  <MDBNavLink onClick={toggleCollapseMine} to="/">
-                    <strong>Logout</strong>
-                  </MDBNavLink>
-                </MDBNavItem>
+                <MDBDropdown>
+                  <MDBDropdownToggle nav caret>
+                    <MDBIcon icon="user" />
+                  </MDBDropdownToggle>
+                  <MDBDropdownMenu className="dropdown-default">
+                  <MDBDropdownItem><Link onClick={toggleCollapse} to="/history"> <HistoryIcon/><strong> History</strong></Link></MDBDropdownItem>
+                  <MDBDropdownItem><Link onClick={toggleCollapse} to="/chat"> <ChatIcon/><strong> Chat</strong></Link></MDBDropdownItem>
+                  <MDBDropdownItem divider />
+                  <MDBDropdownItem><Link onClick={toggleCollapseMine} to="/">
+                  <ExitToAppIcon/><strong> Logout</strong>
+                  </Link></MDBDropdownItem>
+                  </MDBDropdownMenu>
+                </MDBDropdown>
+              </MDBNavItem>
+                
               ) : (
                 <MDBNavItem>
                   <MDBNavLink onClick={toggleCollapse} to="/login">
