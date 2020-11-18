@@ -14,18 +14,12 @@ import MyTextArea from "./MyTextarea";
 
 const vinNumber = (state) => state.vinNumber;
 
-const getVinDataMine = createSelector(
-  [vinNumber],
-  state => state.getVinData
-);
+const getVinDataMine = createSelector([vinNumber], (state) => state.getVinData);
 
-const myOwnVinMine = createSelector(
-  [vinNumber],
-  state => state.myOwnVin
-)
+const myOwnVinMine = createSelector([vinNumber], (state) => state.myOwnVin);
 
 const Career = () => {
-  const [files, setFiles] = useState([])
+  const [files, setFiles] = useState([]);
 
   const getVinData = useSelector(getVinDataMine);
   const myOwnVin = useSelector(myOwnVinMine);
@@ -36,9 +30,6 @@ const Career = () => {
     model: getVinData[8] && getVinData[8].Value,
     mileage: "",
     color: "",
-    Fname: "",
-    Lname: "",
-    email: "",
     phone: "",
     ZIP: "",
     DateToSell: "",
@@ -49,24 +40,10 @@ const Career = () => {
     transmission: "",
   };
 
-  // const formik = useFormik()
-  // console.log(formik);
-
-  const submitHandler = (event) => {
-    event.preventDefault();
-    event.target.className += " was-validated";
-  };
-
   const handleChangi = (files) => {
-    setFiles(files)
+    setFiles(files);
   };
 
-  const postDataHandler = () => {
-
-  };
-
-
-  console.log(files)
   return (
     <div className="py-5" id="cooloor">
       <MDBContainer className="p-4 text-left bg-white" id="coloor">
@@ -80,37 +57,33 @@ const Career = () => {
               initialValues={formData}
               validationSchema={Yup.object({
                 VINN: Yup.string()
-                  .max(16, "Must be 15 characters or less")
-                  .min(16, "Minimum 4 character")
+                  .max(17, "Maximum 17 characters")
+                  .min(17, "Minimum 17 character")
                   .required("Required"),
-                lastName: Yup.string()
+                model: Yup.string()
                   .max(20, "Must be 20 characters or less")
                   .required("Required"),
-                email: Yup.string()
-                  .email("Invalid email address")
+                mileage: Yup.number()
                   .required("Required"),
-                acceptedTerms: Yup.boolean()
-                  .required("Required")
-                  .oneOf([true], "You must accept the terms and conditions."),
-                jobType: Yup.string()
+                color: Yup.string()
                   .oneOf(
-                    ["designer", "development", "product", "other"],
-                    "Invalid Job Type"
+                    ["Biege", "Black", "Blue", "Brown", "Gray", "Red", "Silver", "White", "Dark Green", "Dark Blue", "Dark Red"],
+                    "Invalid Color Type"
                   )
                   .required("Required"),
               })}
-              onSubmit={(values, { setSubmitting }) => {
-                setTimeout(() => {
-                  alert(JSON.stringify(values, null, 2));
-                  setSubmitting(false);
-                }, 400);
+              onSubmit={(values) => {
+                console.log(values);
               }}
-              validateOnBlur
-              validateOnChange
+              validateOnBlur={true}
             >
               {(formik) => {
+                
                 return (
-                  <Form className="needs-validation py-5">
+                  <Form
+                    className="needs-validation py-5"
+                    onSubmit={formik.handleSubmit}
+                  >
                     <h3 className="h3-responsive pb-2">Vehicle information</h3>
                     <div className="form-row">
                       <div className="form-group col-md-6">
@@ -120,6 +93,8 @@ const Career = () => {
                           className="form-control"
                           placeholder="VIN number"
                           {...formik.getFieldProps("VINN")}
+                          value={formik.values.VINN}
+                          onChange={formik.handleChange}
                         />
                       </div>
                       <div className="form-group col-md-6">
@@ -129,6 +104,9 @@ const Career = () => {
                           className="form-control"
                           id="inputEmail4"
                           placeholder="Model"
+                          {...formik.getFieldProps("model")}
+                          value={formik.values.model}
+                          onChange={formik.handleChange}
                         />
                       </div>
                       <div className="form-group col-md-12">
@@ -137,6 +115,9 @@ const Career = () => {
                           type="text"
                           className="form-control"
                           placeholder="Trim"
+                          {...formik.getFieldProps("trim")}
+                          value={formik.values.trim}
+                          onChange={formik.handleChange}
                         />
                       </div>
                     </div>
@@ -149,6 +130,9 @@ const Career = () => {
                           id="mile"
                           className="form-control"
                           placeholder="Exact Mileage"
+                          {...formik.getFieldProps("mileage")}
+                          value={formik.values.mileage}
+                          onChange={formik.handleChange}
                         />
                       </div>
 
@@ -158,6 +142,8 @@ const Career = () => {
                           id="color"
                           name="color"
                           className="form-control"
+                          value={formik.values.color}
+                          onChange={formik.handleChange}
                         >
                           <option>Non-Selected</option>
                           <option value="Biege">Biege</option>
@@ -170,7 +156,7 @@ const Career = () => {
                           <option value="White">White</option>
                           <option value="Dark Green">Dark Green</option>
                           <option value="Dark Blue">Dark Blue</option>
-                          <option value="Dark red">Dark Red</option>
+                          <option value="Dark Red">Dark Red</option>
                         </MySelect>
                       </div>
                     </div>
@@ -178,9 +164,11 @@ const Career = () => {
                       <div className="form-group col-md-6">
                         <MySelect
                           label="How many keys do you have for this vehicle?"
-                          id="one"
-                          name="one"
+                          id="keys"
+                          name="keys"
                           className="form-control"
+                          value={formik.values.keys}
+                          onChange={formik.handleChange}
                         >
                           <option>Non-Selected</option>
                           <option value="One">One</option>
@@ -193,6 +181,8 @@ const Career = () => {
                           name="transmission"
                           id="transmission"
                           className="form-control"
+                          value={formik.values.transmission}
+                          onChange={formik.handleChange}
                         >
                           <option>Non-Selected</option>
                           <option value="Automatic">Automatic</option>
@@ -205,6 +195,8 @@ const Career = () => {
                           id="condition"
                           name="condition"
                           className="form-control"
+                          value={formik.values.condition}
+                          onChange={formik.handleChange}
                         >
                           <option>Non-Selected</option>
                           <option value="10">
@@ -248,6 +240,8 @@ const Career = () => {
                           name="phone"
                           className="form-control"
                           placeholder="Phone number"
+                          value={formik.values.phone}
+                          onChange={formik.handleChange}
                         />
                       </div>
                       <div className="form-group col-md-6">
@@ -258,6 +252,8 @@ const Career = () => {
                           className="form-control"
                           id="post"
                           placeholder="ZIP code"
+                          value={formik.values.ZIP}
+                          onChange={formik.handleChange}
                         />
                       </div>
                     </div>
@@ -268,6 +264,8 @@ const Career = () => {
                           id="cars"
                           name="DateToSell"
                           className="form-control"
+                          value={formik.values.DateToSell}
+                          onChange={formik.handleChange}
                         >
                           <option>Non-Selected</option>
                           <option value="sellTiming">Sell timing</option>
@@ -285,6 +283,8 @@ const Career = () => {
                           name="offerPrice"
                           className="form-control"
                           placeholder="What is your expected offer price? (optional)"
+                          value={formik.values.offerPrice}
+                          onChange={formik.handleChange}
                         />
                       </div>
                     </div>
@@ -296,12 +296,14 @@ const Career = () => {
                       rows="5"
                       className="form-control"
                       placeholder="Type your message"
+                      value={formik.values.message}
+                      onChange={formik.handleChange}
                     />
                     <button
-                      // disabled={!enabled}
+                      disabled={formik.isSubmitting}
                       type="submit"
                       className="btn btn-primary btn-md"
-                      onClick={postDataHandler}
+                      // onClick={formik.handleSubmit}
                     >
                       SUBMIT
                     </button>
