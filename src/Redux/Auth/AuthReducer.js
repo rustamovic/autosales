@@ -1,4 +1,9 @@
-import { BEGIN_LOGIN, SUCCESS_LOGIN, FAILURE_LOGIN } from "./AuthActions";
+import {
+  BEGIN_LOGIN,
+  SUCCESS_LOGIN,
+  FAILURE_LOGIN,
+  MAKE_LOGOUT,
+} from "./AuthActions";
 
 const initialState = {
   beginLogin: false,
@@ -31,6 +36,11 @@ export default (state = initialState, action) => {
         succesLogin: false,
         failureLogin: true,
         posts: [],
+      };
+    case MAKE_LOGOUT:
+      return {
+        ...state,
+        succesLogin: false,
       };
     default:
       return state;

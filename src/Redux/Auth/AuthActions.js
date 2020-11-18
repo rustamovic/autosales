@@ -4,6 +4,8 @@ export const BEGIN_LOGIN = "BEGIN_LOGIN";
 export const SUCCESS_LOGIN = "SUCCESS_LOGIN";
 export const FAILURE_LOGIN = "FAILURE_LOGIN";
 
+export const MAKE_LOGOUT = 'MAKE_LOGOUT';
+
 export const makeLogin = (emailAddress) => async (dispatch) => {
   dispatch({ type: BEGIN_LOGIN });
 
@@ -18,3 +20,9 @@ export const makeLogin = (emailAddress) => async (dispatch) => {
     dispatch({ type: FAILURE_LOGIN });
   }
 };
+
+export const makeLogout = () => {
+  return {
+    type: MAKE_LOGOUT
+  }
+}
