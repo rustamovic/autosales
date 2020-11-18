@@ -30,8 +30,9 @@ const ContactPage = () => {
             className="rounded z-depth-1-half map-container"
             style={{ height: "400px" }}
           >
+            
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d76765.98321148289!2d-73.96694563267306!3d40.751663750099084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spl!2spl!4v1525939514494"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d49296.27466412027!2d-77.053122!3d39.446344!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c8304c14d26e41%3A0x4ae0fc77d021ac32!2s1551%20W%20Old%20Liberty%20Rd%2C%20Sykesville%2C%20MD%2021784!5e0!3m2!1sru!2sus!4v1605710770919!5m2!1sru!2sus"
               title="This is a unique title"
               width="100%"
               height="100%"
@@ -45,15 +46,15 @@ const ContactPage = () => {
               <MDBBtn tag="a" floating color="blue" className="accent-1">
                 <MDBIcon icon="map-marker-alt" />
               </MDBBtn>
-              <p>New York, 94126</p>
-              <p className="mb-md-0">United States</p>
+              <p>1551 W Old Liberty Rd, Sykesville,</p>
+              <p className="mb-md-0">MD 21784</p>
             </MDBCol>
             <MDBCol md="4">
               <MDBBtn tag="a" floating color="blue" className="accent-1">
                 <MDBIcon icon="phone" />
               </MDBBtn>
-              <p>+ 01 234 567 89</p>
-              <p className="mb-md-0">Mon - Fri, 8:00-22:00</p>
+             <p><a href="tel:(443) 552-3131">(443) 552-3131</a></p>
+              <p className="mb-md-0">Mon - Sat, 9:00-7:00 PM</p>
             </MDBCol>
             <MDBCol md="4">
               <MDBBtn tag="a" floating color="blue" className="accent-1">

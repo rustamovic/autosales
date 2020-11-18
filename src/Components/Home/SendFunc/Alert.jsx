@@ -89,9 +89,9 @@ export default function CustomizedDialogs() {
             this:
           </Typography>
           <Typography gutterBottom color="secondary">
-            <h1 className="border-top border-bottom py-2 h1-reponsive">
+            <h3 className="border-top border-bottom py-2 h3-reponsive">
               <strong>3C6UR5FLXFG692365</strong>
-            </h1>
+            </h3>
           </Typography>
           <Typography gutterBottom>
             You can find your VIN in several different places...

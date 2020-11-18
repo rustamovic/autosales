@@ -122,15 +122,15 @@ class Header extends Component {
                     >
                       <a
                         className="nav-link Ripple-parent"
-                        href="https://twitter.com/"
+                        href="https://www.youtube.com/channel/UCyapAPOeRJ-SVktkNszRhvQ?_ga=2.116125317.2081304902.1605710611-609537925.1605092947"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <strong>
-                          <MDBIcon fab icon="twitter" />
+                          <MDBIcon fab icon="youtube" />
                         </strong>
                       </a>
-                      <span>TWITTER</span>
+                      <span>YOUTUBE</span>
                     </MDBTooltip>
                   </MDBNavItem>
                   <MDBNavItem>
@@ -141,7 +141,7 @@ class Header extends Component {
                     >
                       <a
                         className="nav-link Ripple-parent"
-                        href="https://facebook.com/"
+                        href="https://www.facebook.com/trustautoinc/"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -160,7 +160,7 @@ class Header extends Component {
                     >
                       <a
                         className="nav-link Ripple-parent"
-                        href="https://instagram.com/"
+                        href="https://instagram.com/trustautomd"
                         target="_blank"
                         rel="noopener noreferrer"
                       >

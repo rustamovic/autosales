@@ -14,7 +14,7 @@ export default () => {
   return (
     <div style={{ paddingTop: "65px" }}>
       <ContactUsForm />
-      <ContactDetails
+      {/* <ContactDetails
         cards={[
           {
             title: "New York",
@@ -95,7 +95,7 @@ export default () => {
             ),
           },
         ]}
-      />
+      /> */}
 
       <Map />
     </div>
