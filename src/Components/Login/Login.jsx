@@ -10,6 +10,9 @@ import illustration from "../../Assets/PNG/pradoG.png";
 import logo from "../../Assets/logo512.png";
 import { ReactComponent as LoginIcon } from "feather-icons/dist/icons/log-in.svg";
 import { makeLogin } from "../../Redux/Auth/AuthActions";
+import Backdrop from "@material-ui/core/Backdrop";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
 const Container = tw(
   ContainerBase
 )`min-h-screen text-white font-medium flex justify-center`;
@@ -72,6 +75,7 @@ const Login = ({
 
   // const beginLogin = useSelector(beginLoginMine);
   const successLogin = useSelector(succesLoginMine);
+  const beginLogin = useSelector(beginLoginMine);
   const posts = useSelector(postsMine);
 
   if (successLogin) {
@@ -115,6 +119,9 @@ const Login = ({
           <IllustrationImage imageSrc={illustrationImageSrc} />
         </IllustrationContainer>
       </Content>
+      <Backdrop style={{ zIndex: 999, color: "#fff" }} open={beginLogin}>
+        <CircularProgress color="inherit" />
+      </Backdrop>
     </Container>
   );
 };

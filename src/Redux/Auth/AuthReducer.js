@@ -17,9 +17,7 @@ export default (state = initialState, action) => {
     case BEGIN_LOGIN:
       return {
         ...state,
-        beginLogin: true,
-        succesLogin: false,
-        failureLogin: false,
+        beginLogin: true
       };
     case SUCCESS_LOGIN:
       return {

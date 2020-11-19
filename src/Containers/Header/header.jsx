@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import logo from "../../Assets/logo512.png";
-import {useSelector, useDispatch} from 'react-redux';
-import {createSelector} from "reselect"; 
-import HistoryIcon from '@material-ui/icons/History';
-import ChatIcon from '@material-ui/icons/Chat';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { useSelector, useDispatch } from "react-redux";
+import { createSelector } from "reselect";
+import HistoryIcon from "@material-ui/icons/History";
+import ChatIcon from "@material-ui/icons/Chat";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import {
   MDBNavbar,
   MDBNavbarBrand,
@@ -18,9 +18,9 @@ import {
   MDBDropdown,
   MDBDropdownItem,
   MDBDropdownToggle,
-  MDBDropdownMenu
+  MDBDropdownMenu,
 } from "mdbreact";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 import "./header.css";
 import "mdbreact/dist/css/mdb.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -29,12 +29,9 @@ import { makeLogout } from "../../Redux/Auth/AuthActions";
 
 // import Brand from "../../Assets/logo-2.png";
 
-const auth = state => state.auth;
+const auth = (state) => state.auth;
 
-const succesLoginMine = createSelector(
-  [auth],
-  state => state.succesLogin
-)
+const succesLoginMine = createSelector([auth], (state) => state.succesLogin);
 
 const Header = () => {
   const [collapseID, setCollapseID] = useState(false);
@@ -51,7 +48,7 @@ const Header = () => {
     setCollapseID(!collapseID);
     dispatch(makeLogout());
     localStorage.removeItem("token");
-  }
+  };
 
   const token = localStorage.getItem("token");
 
@@ -109,21 +106,35 @@ const Header = () => {
 
               {token || succesLogin ? (
                 <MDBNavItem>
-                <MDBDropdown>
-                  <MDBDropdownToggle nav caret>
-                    <MDBIcon icon="user" />
-                  </MDBDropdownToggle>
-                  <MDBDropdownMenu className="dropdown-default">
-                  <MDBDropdownItem><Link onClick={toggleCollapse} to="/history"> <HistoryIcon/><strong> History</strong></Link></MDBDropdownItem>
-                  <MDBDropdownItem><Link onClick={toggleCollapse} to="/chat"> <ChatIcon/><strong> Chat</strong></Link></MDBDropdownItem>
-                  <MDBDropdownItem divider />
-                  <MDBDropdownItem><Link onClick={toggleCollapseMine} to="/">
-                  <ExitToAppIcon/><strong> Logout</strong>
-                  </Link></MDBDropdownItem>
-                  </MDBDropdownMenu>
-                </MDBDropdown>
-              </MDBNavItem>
-                
+                  <MDBDropdown>
+                    <MDBDropdownToggle nav caret>
+                      <MDBIcon icon="user" />
+                    </MDBDropdownToggle>
+                    <MDBDropdownMenu className="dropdown-default">
+                      <MDBDropdownItem>
+                        <Link onClick={toggleCollapse} to="/history">
+                          {" "}
+                          <HistoryIcon />
+                          <strong> History</strong>
+                        </Link>
+                      </MDBDropdownItem>
+                      <MDBDropdownItem>
+                        <Link onClick={toggleCollapse} to="/chat">
+                          {" "}
+                          <ChatIcon />
+                          <strong> Chat</strong>
+                        </Link>
+                      </MDBDropdownItem>
+                      <MDBDropdownItem divider />
+                      <MDBDropdownItem>
+                        <Link onClick={toggleCollapseMine} to="/">
+                          <ExitToAppIcon />
+                          <strong> Logout</strong>
+                        </Link>
+                      </MDBDropdownItem>
+                    </MDBDropdownMenu>
+                  </MDBDropdown>
+                </MDBNavItem>
               ) : (
                 <MDBNavItem>
                   <MDBNavLink onClick={toggleCollapse} to="/login">
