@@ -100,7 +100,6 @@ const Career = () => {
                     values.color,
                     values.keys,
                     values.condition,
-                    values.condition,
                     values.transmission,
                     values.DateToSell,
                     values.offerPrice,
