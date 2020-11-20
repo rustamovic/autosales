@@ -22,7 +22,6 @@
     "material-ui-dropzone": "^3.5.0",
     "mdbreact": "^4.27.0",
     "react": "^16.13.1",
-    "react-app-rewired": "^2.1.6",
     "react-dom": "^16.13.1",
     "react-google-font-loader": "^1.1.0",
     "react-helmet": "^6.1.0",
@@ -47,8 +46,8 @@
     "yup": "^0.29.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build && sw-precache --config=sw-precache-config.js",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build && sw-precache --config=sw-precache-config.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start-sw": "http-server ./build"
@@ -68,5 +67,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "customize-cra": "^1.0.0",
+    "react-app-rewired": "^2.1.6"
   }
 }
