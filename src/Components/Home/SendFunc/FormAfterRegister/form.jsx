@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { MDBCol, MDBContainer, MDBRow } from "mdbreact";
 import { useSelector, useDispatch } from "react-redux";
-import { createSelector } from "reselect";
 import { useHistory } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
@@ -11,12 +10,9 @@ import "../stepper/main";
 import MyTextInput from "./MyTextInput";
 import MySelect from "./MySelect";
 import MyTextArea from "./MyTextarea";
+import { getVinDataMine, myOwnVinMine } from "../../../../Redux/VinNumber/VinNumberSelector";
 
-const vinNumber = (state) => state.vinNumber;
 
-const getVinDataMine = createSelector([vinNumber], (state) => state.getVinData);
-
-const myOwnVinMine = createSelector([vinNumber], (state) => state.myOwnVin);
 
 const Career = () => {
   const [files, setFiles] = useState([]);

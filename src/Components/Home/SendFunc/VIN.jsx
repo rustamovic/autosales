@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { MDBContainer, MDBCol } from "mdbreact";
-import { useSelector, useDispatch } from "react-redux";
-import { createSelector } from "reselect";
+import { useSelector, useDispatch } from "react-redux"
 import { ReactComponent as SubmitButtonIcon } from "feather-icons/dist/icons/log-in.svg";
 import styled from "styled-components";
 import tw from "twin.macro";
@@ -10,13 +9,8 @@ import { getVinNumber } from "../../../Redux/VinNumber/VinNumberAction";
 import { useHistory } from "react-router-dom";
 import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { getVinDataBeginMine } from "../../../Redux/VinNumber/VinNumberSelector";
 
-const vinNumber = (state) => state.vinNumber;
-
-const getVinDataBeginMine = createSelector(
-  [vinNumber],
-  (state) => state.getVinDataBegin
-);
 
 const Agent = () => {
   const dispatch = useDispatch();

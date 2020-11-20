@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import logo from "../../Assets/logo512.png";
 import { useSelector, useDispatch } from "react-redux";
-import { createSelector } from "reselect";
 import HistoryIcon from "@material-ui/icons/History";
 import ChatIcon from "@material-ui/icons/Chat";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
@@ -26,12 +25,10 @@ import "mdbreact/dist/css/mdb.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import { makeLogout } from "../../Redux/Auth/AuthActions";
+import { succesLoginMine } from "../../Redux/Auth/AuthSelector";
 
 // import Brand from "../../Assets/logo-2.png";
 
-const auth = (state) => state.auth;
-
-const succesLoginMine = createSelector([auth], (state) => state.succesLogin);
 
 const Header = () => {
   const [collapseID, setCollapseID] = useState(false);

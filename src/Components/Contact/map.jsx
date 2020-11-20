@@ -12,6 +12,9 @@ import {
 import "mdbreact/dist/css/mdb.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
+
+
+
 const ContactPage = () => {
   return (
     <MDBContainer className="my-3">

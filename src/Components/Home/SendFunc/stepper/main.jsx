@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { createSelector } from "reselect";
 import { MDBCol, MDBContainer, MDBRow } from "mdbreact";
 import { DropzoneArea } from "material-ui-dropzone";
 import "./main.css";
@@ -11,12 +10,7 @@ import MySelect from "../FormAfterRegister/MySelect";
 import MyTextArea from "../FormAfterRegister/MyTextarea";
 import { addCarServer } from "../../../../Redux/addCar/addCarActions";
 import {useHistory} from 'react-router-dom';
-
-const vinNumber = (state) => state.vinNumber;
-
-const getVinDataMine = createSelector([vinNumber], (state) => state.getVinData);
-
-const myOwnVinMine = createSelector([vinNumber], (state) => state.myOwnVin);
+import { getVinDataMine, myOwnVinMine } from "../../../../Redux/VinNumber/VinNumberSelector";
 
 const Career = () => {
   const getVinData = useSelector(getVinDataMine);

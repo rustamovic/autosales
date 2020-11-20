@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { createSelector } from "reselect";
 import { useHistory, useLocation } from "react-router-dom";
 import { Container as ContainerBase } from "../Misk/Layout";
 import tw from "twin.macro";
@@ -12,6 +11,7 @@ import { ReactComponent as LoginIcon } from "feather-icons/dist/icons/log-in.svg
 import { makeLogin } from "../../Redux/Auth/AuthActions";
 import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { beginLoginMine, postsMine, succesLoginMine } from "../../Redux/Auth/AuthSelector";
 
 const Container = tw(
   ContainerBase
@@ -44,15 +44,7 @@ const IllustrationImage = styled.div`
   ${tw`m-12 xl:m-16 w-full max-w-sm bg-contain bg-center bg-no-repeat`}
 `;
 
-const auth = (state) => state.auth;
 
-const beginLoginMine = createSelector([auth], (state) => state.beginLogin);
-
-const succesLoginMine = createSelector([auth], (state) => state.succesLogin);
-
-const failureLoginMine = createSelector([auth], (state) => state.failureLogin);
-
-const postsMine = createSelector([auth], (state) => state.posts);
 
 const Login = ({
   logoLinkUrl = "#",
