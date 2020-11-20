@@ -10,9 +10,10 @@ import "../stepper/main";
 import MyTextInput from "./MyTextInput";
 import MySelect from "./MySelect";
 import MyTextArea from "./MyTextarea";
-import { getVinDataMine, myOwnVinMine } from "../../../../Redux/VinNumber/VinNumberSelector";
-
-
+import {
+  getVinDataMine,
+  myOwnVinMine,
+} from "../../../../Redux/VinNumber/VinNumberSelector";
 
 const Career = () => {
   const [files, setFiles] = useState([]);
@@ -26,6 +27,9 @@ const Career = () => {
     model: getVinData[8] && getVinData[8].Value,
     mileage: "",
     color: "",
+    Fname: "",
+    Lname: "",
+    email: localStorage.getItem("email"),
     phone: "",
     ZIP: "",
     DateToSell: "",
@@ -94,9 +98,9 @@ const Career = () => {
                     values.transmission,
                     values.DateToSell,
                     values.offerPrice,
-                    "khadjia",
-                    "qwert",
-                    "qwerty@mail.ru",
+                    values.Fname,
+                    values.Lname,
+                    values.email,
                     values.phone,
                     values.ZIP,
                     values.message,
@@ -255,6 +259,38 @@ const Career = () => {
                       showFileNames
                       required
                     />
+                    <hr />
+                    <h3 className="h3-responsive py-2">Your Information</h3>
+                    <div className="form-row">
+                      <div className="form-group col-md-6">
+                        <MyTextInput
+                          label="Your first name"
+                          name="Fname"
+                          type="text"
+                          id="Fname"
+                          className="form-control"
+                          placeholder="First name"
+                          {...formik.getFieldProps("Fname")}
+                          value={formik.values.Fname}
+                          onChange={formik.handleChange}
+                        />
+                      </div>
+
+                      <div className="form-group col-md-6">
+                        <MyTextInput
+                          label="Your last name"
+                          name="Lname"
+                          type="text"
+                          id="Lname"
+                          className="form-control"
+                          placeholder="Last name"
+                          {...formik.getFieldProps("Lname")}
+                          value={formik.values.Lname}
+                          onChange={formik.handleChange}
+                        />
+                      </div>
+                    </div>
+
                     <hr />
                     <h3 className="h3-responsive py-2">
                       Additional Information
