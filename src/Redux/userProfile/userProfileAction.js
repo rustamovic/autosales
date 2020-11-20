@@ -6,10 +6,12 @@ export const USER_PROFILE_SUCCESS = "USER_PROFILE_SUCCESS";
 export const USER_PROFILE_FAIL = "USER_PROFILE_FAIL"
 
 
-export const userProfileLogin = (email) => async dispatch => {
+export const userProfileLogin = () => async dispatch => {
     dispatch({type: USER_PROFILE_BEGIN});
 
     try {
+
+        const email = localStorage.getItem("email")
         const response = await axiosInstance().get(`/profile?email=${email}`);
 
         dispatch({type: USER_PROFILE_SUCCESS, payload: response})

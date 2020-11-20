@@ -63,6 +63,13 @@ const Career = () => {
                 model: Yup.string()
                   .max(20, "Must be 20 characters or less")
                   .required("Required"),
+                trim: Yup.string().required("Required"),
+                Fname: Yup.string().required("Required"),
+                Lname: Yup.string().required("Required"),
+                keys: Yup.string().required("Required"),
+                ZIP: Yup.string().required("Required"),
+                condition: Yup.string().required("Required"),
+                transmission: Yup.string().required("Required"),
                 mileage: Yup.number().required("Required"),
                 color: Yup.string()
                   .oneOf(
@@ -364,10 +371,9 @@ const Career = () => {
                       onChange={formik.handleChange}
                     />
                     <button
-                      disabled={formik.isSubmitting}
+                      disabled={!formik.isValid}
                       type="submit"
                       className="btn btn-primary btn-md"
-                      // onClick={formik.handleSubmit}
                     >
                       SUBMIT
                     </button>
