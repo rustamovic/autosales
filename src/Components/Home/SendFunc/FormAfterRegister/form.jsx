@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { MDBCol, MDBContainer, MDBRow } from "mdbreact";
 import { useSelector, useDispatch } from "react-redux";
 import { createSelector } from "reselect";
-
+import { useHistory } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-
+import { addCarServer } from "../../../../Redux/addCar/addCarActions";
 import { DropzoneArea } from "material-ui-dropzone";
 import "../stepper/main";
 import MyTextInput from "./MyTextInput";
@@ -20,10 +20,10 @@ const myOwnVinMine = createSelector([vinNumber], (state) => state.myOwnVin);
 
 const Career = () => {
   const [files, setFiles] = useState([]);
-
+  const dispatch = useDispatch();
   const getVinData = useSelector(getVinDataMine);
   const myOwnVin = useSelector(myOwnVinMine);
-
+  const history = useHistory();
   const formData = {
     VINN: myOwnVin,
     trim: "",
@@ -63,22 +63,54 @@ const Career = () => {
                 model: Yup.string()
                   .max(20, "Must be 20 characters or less")
                   .required("Required"),
-                mileage: Yup.number()
-                  .required("Required"),
+                mileage: Yup.number().required("Required"),
                 color: Yup.string()
                   .oneOf(
-                    ["Biege", "Black", "Blue", "Brown", "Gray", "Red", "Silver", "White", "Dark Green", "Dark Blue", "Dark Red"],
+                    [
+                      "Biege",
+                      "Black",
+                      "Blue",
+                      "Brown",
+                      "Gray",
+                      "Red",
+                      "Silver",
+                      "White",
+                      "Dark Green",
+                      "Dark Blue",
+                      "Dark Red",
+                    ],
                     "Invalid Color Type"
                   )
                   .required("Required"),
               })}
               onSubmit={(values) => {
                 console.log(values);
+                dispatch(
+                  addCarServer(
+                    files,
+                    values.VINN,
+                    values.trim,
+                    values.model,
+                    values.mileage,
+                    values.color,
+                    values.keys,
+                    values.condition,
+                    values.transmission,
+                    values.DateToSell,
+                    values.offerPrice,
+                    "khadjia",
+                    "qwert",
+                    "qwerty@mail.ru",
+                    values.phone,
+                    values.ZIP,
+                    values.message,
+                    history
+                  )
+                );
               }}
               validateOnBlur={true}
             >
               {(formik) => {
-                
                 return (
                   <Form
                     className="needs-validation py-5"
