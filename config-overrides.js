@@ -1,9 +1,9 @@
-const path = require('react');
+const path = require('path');
 const {override} = require('customize-cra')
 
 
 const options = {
-  stylesDir: path.join(__dirname, './src/index.css'),
+  stylesDir: path.join(__dirname, './src'),
   themeVariables: [
     '@primary-color',
     '@secondary-color',
