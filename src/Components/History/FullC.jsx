@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
+import {useSelector} from 'react-redux';
 import MobileStepper from "@material-ui/core/MobileStepper";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
@@ -9,6 +10,8 @@ import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
+import { detailDataMine } from "../../Redux/userProfile/userProfileSelector";
+
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -62,11 +65,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function SwipeableTextMobileStepper() {
+const SwipeableTextMobileStepper = () => {
   const classes = useStyles();
   const theme = useTheme();
+  const detailData = useSelector(detailDataMine);
   const [activeStep, setActiveStep] = React.useState(0);
-  const maxSteps = tutorialSteps.length;
+  const maxSteps = detailData?.Photos?.length;
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -80,6 +84,8 @@ function SwipeableTextMobileStepper() {
     setActiveStep(step);
   };
 
+ 
+  console.log(detailData, "detailData")
   return (
     <MDBContainer className={classes.root}>
       <h1 className="h1-responsive my-4 text-primary">
@@ -97,13 +103,13 @@ function SwipeableTextMobileStepper() {
               onChangeIndex={handleStepChange}
               enableMouseEvents
             >
-              {tutorialSteps.map((step, index) => (
-                <div key={step.label}>
+              {detailData?.Photos?.map((step, index) => (
+                <div key={index}>
                   {Math.abs(activeStep - index) <= 2 ? (
                     <img
                       className={classes.img}
-                      src={step.imgPath}
-                      alt={step.label}
+                      src={step}
+                      alt={index}
                     />
                   ) : null}
                 </div>
@@ -147,30 +153,30 @@ function SwipeableTextMobileStepper() {
         </MDBCol>
         <MDBCol md="6" className="text-left text-secondary">
           <h3>
-            <strong>VIN Number: </strong> 1231223wersdfsg
+            <strong>VIN Number: </strong> {detailData?.VIN}
           </h3>
           <h3>
-            <strong>Car Model: </strong> BMW X6
+            <strong>Car Model: </strong> {detailData?.carModel}
           </h3>
           <h3>
-            <strong>Exact Mileage: </strong>12000
+            <strong>Exact Mileage: </strong>{detailData?.carMileage}
           </h3>
           <h3>
-            <strong>Exterior Color: </strong> Green
+            <strong>Exterior Color: </strong> {detailData?.carColor}
           </h3>
           <h3>
-            <strong>Keys: </strong> 2+
+            <strong>Keys: </strong> {detailData?.key}
           </h3>
           <h3>
-            <strong>Transmission: </strong> Manual
+            <strong>Transmission: </strong> {detailData?.transmision}
           </h3>
           <h3>
-            <strong>Condition of vehicle: </strong> 5
+            <strong>Condition of vehicle: </strong> {detailData?.VehicleCondition}
           </h3>
         </MDBCol>
       </MDBRow>
     </MDBContainer>
   );
-}
+};
 
 export default SwipeableTextMobileStepper;

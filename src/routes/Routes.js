@@ -47,7 +47,7 @@ const Routes = () => {
             <Route exact path="/form" component={Form} />
             <Route exact path="/history" component={History} />
             <Route exact path="/map" component={MapMine} />
-            <Route exact path="/Fullhistory" component={FullHistory} />
+            <Route exact path="/Fullhistory/:id" component={FullHistory} />
             <Route path="*" component={NotFound} />
           </Switch>
           <Footer />

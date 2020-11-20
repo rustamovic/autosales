@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { userProfileDataMine } from "../../Redux/userProfile/userProfileSelector";
+import { handleObjectData, userProfileLogin } from "../../Redux/userProfile/userProfileAction";
 import {
   MDBCard,
   MDBCardBody,
@@ -13,41 +16,55 @@ import {
 } from "mdbreact";
 
 const CardExample = () => {
+  const dispatch = useDispatch();
+  const userProfileData = useSelector(userProfileDataMine);
+  console.log(userProfileData, "data");
+
+  useEffect(() => {
+    dispatch(userProfileLogin());
+  }, [dispatch]);
+
   return (
     <MDBContainer style={{ marginTop: "100px" }} className="text-secondary">
       <h1 className="h1-responsive my-4 text-secondary">
         History of submitted vehicles
       </h1>
       <MDBRow>
-        <MDBCol md="4">
-          <MDBCard>
-            <MDBCardImage
-              top
-              src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%28131%29.jpg"
-              overlay="white-slight"
-              hover
-              waves
-              alt="MDBCard image cap"
-            />
-            <MDBCardBody>
-              <MDBCardTitle>Card Title</MDBCardTitle>
-              <hr />
-              <MDBCardText>
-                Some quick example text to build on the card title and make up
-                the bulk of the card&apos;s content.
-              </MDBCardText>
-              <MDBLink
-                to="/Fullhistory"
-                className="black-text d-flex justify-content-end"
-              >
-                <h5>
-                  Read more
-                  <MDBIcon icon="angle-double-right" className="ml-2" />
-                </h5>
-              </MDBLink>
-            </MDBCardBody>
-          </MDBCard>
-        </MDBCol>
+        {userProfileData &&
+          userProfileData.map((data, index) => {
+            return (
+              <MDBCol md="4" key={index}>
+                <MDBCard>
+                  <MDBCardImage
+                    top
+                    src={data.Photos[0]}
+                    overlay="white-slight"
+                    style={{objectFit: "contain !important"}}
+                    hover
+                    waves
+                    alt="MDBCard image cap"
+                  />
+                  <MDBCardBody>
+                    <MDBCardTitle>{data.FirstName}</MDBCardTitle>
+                    <hr />
+                    <MDBCardText>
+                      {data.transmission}
+                    </MDBCardText>
+                    <MDBLink
+                      to={`/Fullhistory/${index}`}
+                      className="black-text d-flex justify-content-end"
+                      onClick={() => dispatch(handleObjectData(data))}
+                    >
+                      <h5>
+                        Read more
+                        <MDBIcon icon="angle-double-right" className="ml-2" />
+                      </h5>
+                    </MDBLink>
+                  </MDBCardBody>
+                </MDBCard>
+              </MDBCol>
+            );
+          })}
       </MDBRow>
     </MDBContainer>
   );

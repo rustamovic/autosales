@@ -2,6 +2,7 @@ import {
   USER_PROFILE_BEGIN,
   USER_PROFILE_SUCCESS,
   USER_PROFILE_FAIL,
+  HANDLE_DATA
 } from "./userProfileAction";
 
 const initialState = {
@@ -9,6 +10,7 @@ const initialState = {
   userProfileSuccess: false,
   userProfileFail: false,
   userProfileData: [],
+  detailData: {},
 };
 
 export default (state = initialState, action) => {
@@ -33,7 +35,11 @@ export default (state = initialState, action) => {
         userProfileSuccess: false,
         userProfileFail: true,
       };
-
+    case HANDLE_DATA:
+      return {
+        ...state,
+        detailData: action.payload
+      }
     default:
       return state;
   }
