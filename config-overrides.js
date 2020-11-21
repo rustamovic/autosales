@@ -3,7 +3,7 @@ const {override} = require('customize-cra')
 
 
 const options = {
-  stylesDir: path.join(__dirname, './src'),
+  stylesDir: path.join(__dirname, './src/index.css'),
   themeVariables: [
     '@primary-color',
     '@secondary-color',
