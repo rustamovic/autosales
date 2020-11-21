@@ -19,6 +19,7 @@ const Form = lazy(() =>
 );
 const History = lazy(() => import("../Components/History/Components"));
 const FullHistory = lazy(() => import("../Components/History/FullC"));
+const AdminLogin = lazy(() => import("../Components/AdminLogin/AdminLogin"))
 // const MapMine = lazy(() => import("../Components/MapMine"));
 
 const Routes = () => {
@@ -45,6 +46,7 @@ const Routes = () => {
             <Route exact path="/termsofservice" component={Terms} />
             <Route exact path="/privacyvspolicy" component={Policy} />
             <Route exact path="/stepper" component={Stepper} />
+            <Route exact path="/admin" component={AdminLogin} />
             <ProtectedRoute exact path="/form" component={Form} />
             <ProtectedRoute exact path="/history" component={History} />
             <ProtectedRoute exact path="/Fullhistory/:id" component={FullHistory} />

@@ -4,6 +4,7 @@ import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
+import { useLocation } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import {
   makeStyles,
@@ -11,7 +12,7 @@ import {
   createMuiTheme,
 } from "@material-ui/core/styles";
 import logo from "../../Assets/dealer-logo.png";
-import {MDBContainer} from 'mdbreact'
+import { MDBContainer } from "mdbreact";
 import { FontProvider } from "./Fonts/Font";
 import { Font } from "./Fonts/Font";
 import { ColumnToRow, Item } from "@mui-treasury/components/flex";
@@ -94,131 +95,142 @@ const useStyles = makeStyles(({ palette, typography }) => ({
 export const Footer = React.memo(function ArcAppFooter() {
   const scrollToTop = () => window.scrollTo(0, 0);
   const classes = useStyles();
-  return (
+  const location = useLocation();
 
+  if (location?.pathname === "/admin") {
+    return null;
+  }
+  return (
     <FontProvider
       fonts={[{ font: "Rambla", weights: [400, 700] }, { font: "Nunito" }]}
     >
       <Box width={"100%"}>
         <Box px={2} py={10} className={classes.middle}>
           <Container disableGutters>
-          <MDBContainer>
-            <Grid container spacing={4}>
-              <Grid item xs={12} md={4} lg={3}>
-                <Box
-                  component={"img"}
-                  mt={-3}
-                  // width={120}
-                  height={64}
-                  src={logo}
-                  alt=""
-                  borderRadius={12}
-                />
-                <Typography className={classes.info}>
-                  <Font index={1}>TRUST AUTO Inc., 1551 W Old Liberty Rd, Sykesville, MD 21784</Font>
-                </Typography>
+            <MDBContainer>
+              <Grid container spacing={4}>
+                <Grid item xs={12} md={4} lg={3}>
+                  <Box
+                    component={"img"}
+                    mt={-3}
+                    // width={120}
+                    height={64}
+                    src={logo}
+                    alt=""
+                    borderRadius={12}
+                  />
+                  <Typography className={classes.info}>
+                    <Font index={1}>
+                      TRUST AUTO Inc., 1551 W Old Liberty Rd, Sykesville, MD
+                      21784
+                    </Font>
+                  </Typography>
 
-                <Typography className={classes.info}>
-                  <Font index={1}><a href="tel:(443) 552-3131">(443) 552-3131</a></Font>
-                </Typography>
-              </Grid>
-              <Grid item xs={12} md={8} lg={6}>
-                <Grid container spacing={2}>
-                  <Grid item xs={6} sm={6}>
-                    <CategoryProvider useStyles={useMagCategoryMenuStyles}>
-                      <CategoryTitle>
-                        <Font>Information</Font>
-                      </CategoryTitle>
-                      {/* <CategoryItem>
+                  <Typography className={classes.info}>
+                    <Font index={1}>
+                      <a href="tel:(443) 552-3131">(443) 552-3131</a>
+                    </Font>
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} md={8} lg={6}>
+                  <Grid container spacing={2}>
+                    <Grid item xs={6} sm={6}>
+                      <CategoryProvider useStyles={useMagCategoryMenuStyles}>
+                        <CategoryTitle>
+                          <Font>Information</Font>
+                        </CategoryTitle>
+                        {/* <CategoryItem>
                         <Font index={1}>
                           <Link to="" onClick={scrollToTop()}>
                             License
                           </Link>
                         </Font>
                       </CategoryItem> */}
-                      <CategoryItem>
-                        <Font index={1}>
-                          <Link to="/privacyvspolicy" onClick={scrollToTop}>Privacy Policy</Link>
-                        </Font>
-                      </CategoryItem>
-                      <CategoryItem>
-                        <Font index={1}>
-                          <Link to="/termsofservice" onClick={scrollToTop}>Terms of Service</Link>
-                        </Font>
-                      </CategoryItem>
-                      <CategoryItem>
-                        <Font index={1}>
-                          <Link to="/faq" onClick={scrollToTop()}>
-                            FAQ
-                          </Link>
-                        </Font>
-                      </CategoryItem>
-                    </CategoryProvider>
-                  </Grid>
-                  <Grid item xs={6} sm={6}>
-                    <CategoryProvider useStyles={useMagCategoryMenuStyles}>
-                      <CategoryTitle>
-                        About Us
-                      </CategoryTitle>
-                      <CategoryItem>
-                        <Font index={1}>
-                          <Link to="/contact" onClick={scrollToTop()}>
-                            Contact
-                          </Link>
-                        </Font>
-                      </CategoryItem>
-                      <CategoryItem>
-                        <Font index={1}>
-                          <Link to="/about" onClick={scrollToTop()}>
-                            Team
-                          </Link>
-                        </Font>
-                      </CategoryItem>
-                      {/* <CategoryItem>
+                        <CategoryItem>
+                          <Font index={1}>
+                            <Link to="/privacyvspolicy" onClick={scrollToTop}>
+                              Privacy Policy
+                            </Link>
+                          </Font>
+                        </CategoryItem>
+                        <CategoryItem>
+                          <Font index={1}>
+                            <Link to="/termsofservice" onClick={scrollToTop}>
+                              Terms of Service
+                            </Link>
+                          </Font>
+                        </CategoryItem>
+                        <CategoryItem>
+                          <Font index={1}>
+                            <Link to="/faq" onClick={scrollToTop()}>
+                              FAQ
+                            </Link>
+                          </Font>
+                        </CategoryItem>
+                      </CategoryProvider>
+                    </Grid>
+                    <Grid item xs={6} sm={6}>
+                      <CategoryProvider useStyles={useMagCategoryMenuStyles}>
+                        <CategoryTitle>About Us</CategoryTitle>
+                        <CategoryItem>
+                          <Font index={1}>
+                            <Link to="/contact" onClick={scrollToTop()}>
+                              Contact
+                            </Link>
+                          </Font>
+                        </CategoryItem>
+                        <CategoryItem>
+                          <Font index={1}>
+                            <Link to="/about" onClick={scrollToTop()}>
+                              Team
+                            </Link>
+                          </Font>
+                        </CategoryItem>
+                        {/* <CategoryItem>
                         <Font index={1}>Support</Font>
                       </CategoryItem> */}
-                    </CategoryProvider>
+                      </CategoryProvider>
+                    </Grid>
                   </Grid>
                 </Grid>
+                <Grid item xs={12} md={8} lg={3} style={{ marginLeft: "auto" }}>
+                  <CategoryProvider useStyles={useMagCategoryMenuStyles}>
+                    <CategoryTitle>
+                      <Font>Subscribe</Font>
+                    </CategoryTitle>
+                  </CategoryProvider>
+                  <SocialProvider useStyles={usePoofSocialLinkStyles}>
+                    <a
+                      href="https://www.linkedin.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <SocialLink brand={"LinkedIn"} />
+                    </a>
+                    <a
+                      href="https://twitter.com/mdtrustauto"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <SocialLink brand={"Twitter"} />
+                    </a>
+                    <a
+                      href="https://www.facebook.com/trustautoinc/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <SocialLink brand={"Facebook"} />
+                    </a>
+                    <a
+                      href="https://instagram.com/trustautomd"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <SocialLink brand={"Instagram"} />
+                    </a>
+                  </SocialProvider>
+                </Grid>
               </Grid>
-              <Grid item xs={12} md={8} lg={3} style={{ marginLeft: "auto" }}>
-                <CategoryProvider useStyles={useMagCategoryMenuStyles}>
-                  <CategoryTitle>
-                    <Font>Subscribe</Font>
-                  </CategoryTitle>
-                </CategoryProvider>
-                <SocialProvider useStyles={usePoofSocialLinkStyles}>
-                  <a
-                    href="https://www.linkedin.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <SocialLink brand={"LinkedIn"} />
-                  </a>
-                  <a
-                    href="https://twitter.com/mdtrustauto"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <SocialLink brand={"Twitter"} />
-                  </a>
-                  <a
-                    href="https://www.facebook.com/trustautoinc/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <SocialLink brand={"Facebook"} />
-                  </a>
-                  <a
-                    href="https://instagram.com/trustautomd"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <SocialLink brand={"Instagram"} />
-                  </a>
-                </SocialProvider>
-              </Grid>
-            </Grid>
             </MDBContainer>
           </Container>
         </Box>
@@ -260,13 +272,13 @@ export const Footer = React.memo(function ArcAppFooter() {
                     color={"textSecondary"}
                   >
                     <Font index={1}>
-                      Made by Developers team of TRUST AUTO Inc. © 2020 All right reserved
+                      Made by Developers team of TRUST AUTO Inc. © 2020 All
+                      right reserved
                     </Font>
                   </Typography>
                 </Box>
               </Item>
             </ColumnToRow>
-            
           </Container>
         </Box>
       </Box>

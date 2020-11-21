@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import logo from "../../Assets/logo512.png";
 import { useSelector, useDispatch } from "react-redux";
+import {useLocation} from 'react-router-dom';
 import HistoryIcon from "@material-ui/icons/History";
 import ChatIcon from "@material-ui/icons/Chat";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
@@ -34,6 +35,9 @@ const Header = () => {
   const [collapseID, setCollapseID] = useState(false);
   const succesLogin = useSelector(succesLoginMine);
   const dispatch = useDispatch();
+  const location = useLocation();
+
+  console.log(location)
 
   const toggleCollapse = () => {
     window.scrollTo(0, 0);
@@ -57,6 +61,10 @@ const Header = () => {
       onClick={toggleCollapse}
     />
   );
+
+  if(location?.pathname === "/admin"){
+    return null
+  }
 
   return (
     <div>

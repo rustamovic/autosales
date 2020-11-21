@@ -46,8 +46,8 @@
     "yup": "^0.29.3"
   },
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build && sw-precache --config=sw-precache-config.js",
+    "start": "react-scripts start",
+    "build": "react-scripts build && sw-precache --config=sw-precache-config.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
