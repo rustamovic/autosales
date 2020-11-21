@@ -6,7 +6,7 @@ export const FAILURE_LOGIN = "FAILURE_LOGIN";
 
 export const MAKE_LOGOUT = 'MAKE_LOGOUT';
 
-export const makeLogin = (emailAddress) => async (dispatch) => {
+export const makeLogin = (emailAddress, location, history) => async (dispatch) => {
   dispatch({ type: BEGIN_LOGIN });
 
   try {
@@ -17,6 +17,12 @@ export const makeLogin = (emailAddress) => async (dispatch) => {
     dispatch({ type: SUCCESS_LOGIN, payload: response });
     localStorage.setItem("token", response.data);
     localStorage.setItem("email", emailAddress);
+
+    if (location.state) {
+      history.replace(location.state?.from?.pathname);
+    } else {
+      history.replace("/");
+    }
   } catch (err) {
     dispatch({ type: FAILURE_LOGIN });
   }
