@@ -28,3 +28,8 @@ code {
   color: white;
   border: 1px solid rgba(0, 0, 255, 0.37);
 }
+
+.error {
+  color: rgb(245, 71, 71);
+  text-align: left;
+}

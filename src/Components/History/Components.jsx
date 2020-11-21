@@ -49,7 +49,7 @@ const CardExample = () => {
                     alt="image"
                   />
                   <MDBCardBody>
-                    <MDBCardTitle>{data.FirstName}</MDBCardTitle>
+                    <MDBCardTitle>{data.carModel}</MDBCardTitle>
                     <hr />
                     <MDBCardText>{data.transmission}</MDBCardText>
                     <MDBLink

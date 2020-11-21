@@ -3,6 +3,7 @@ import {
   SUCCESS_LOGIN,
   FAILURE_LOGIN,
   MAKE_LOGOUT,
+  HANDLE_CLOSE_PROMPT,
 } from "./AuthActions";
 
 const initialState = {
@@ -17,7 +18,7 @@ export default (state = initialState, action) => {
     case BEGIN_LOGIN:
       return {
         ...state,
-        beginLogin: true
+        beginLogin: true,
       };
     case SUCCESS_LOGIN:
       return {
@@ -39,6 +40,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         succesLogin: false,
+      };
+    case HANDLE_CLOSE_PROMPT:
+      return {
+        ...state,
+        failureLogin: false,
       };
     default:
       return state;

@@ -1,15 +1,29 @@
 import React from "react";
-import { useDispatch, useSelctor } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form } from "formik";
+import MuiAlert from "@material-ui/lab/Alert";
 import * as Yup from "yup";
-import { useHistory } from "react-router-dom";
 import AdminPanelHeader from "../../Containers/AdminPanelHeader/AdminPanelHeader";
 import MyTextInput from "../Home/SendFunc/FormAfterRegister/MyTextInput";
-import { addAdmin } from "../../Redux/adminLogin/adminLoginAction";
+import Snackbar from "@material-ui/core/Snackbar";
+import {
+  addAdmin,
+  handleClose,
+  handleCloseSecond,
+} from "../../Redux/adminLogin/adminLoginAction";
+import {
+  addAdminLoginFailMine,
+  addAdminLoginSuccessMineSecond,
+} from "../../Redux/adminLogin/adminLoginSelector";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const AddAdmin = () => {
-  const history = useHistory();
   const dispatch = useDispatch();
+  const addAdminLoginFail = useSelector(addAdminLoginFailMine);
+  const addAdminLoginSuccess = useSelector(addAdminLoginSuccessMineSecond);
 
   const formData = {
     Lname: "",
@@ -19,7 +33,6 @@ const AddAdmin = () => {
 
   return (
     <AdminPanelHeader>
-      <h6 style={{ textAlign: "left" }}>Add User</h6>
       <Formik
         initialValues={formData}
         validationSchema={Yup.object({
@@ -27,11 +40,15 @@ const AddAdmin = () => {
           password: Yup.string().required("Required"),
           email: Yup.string().required("Required"),
         })}
-        onSubmit={(values) => {
-          console.log(values);
-          dispatch(
-            addAdmin(values.Fname, values.email, values.password, history)
-          );
+        onSubmit={(values, { resetForm }) => {
+          dispatch(addAdmin(values.Fname, values.email, values.password));
+          resetForm({
+            values: {
+              Fname: "",
+              password: "",
+              email: "",
+            },
+          });
         }}
         validateOnBlur={true}
       >
@@ -42,9 +59,8 @@ const AddAdmin = () => {
               onSubmit={formik.handleSubmit}
               noValidate
             >
-              <h3 className="h3-responsive py-2">User Information</h3>
               <div className="form-row">
-                <div className="form-group col-md-6">
+                <div className="form-group col-md-6 offset-md-3 col-sm-12">
                   <MyTextInput
                     label="Your first name"
                     name="Fname"
@@ -57,8 +73,9 @@ const AddAdmin = () => {
                     onChange={formik.handleChange}
                   />
                 </div>
-
-                <div className="form-group col-md-6">
+              </div>
+              <div className="form-row">
+                <div className="form-group col-md-6 offset-md-3 col-sm-12">
                   <MyTextInput
                     label="Your password"
                     name="password"
@@ -73,7 +90,7 @@ const AddAdmin = () => {
                 </div>
               </div>
               <div className="form-row">
-                <div className="form-group col-md-12">
+                <div className="form-group col-md-6 offset-md-3 col-sm-12">
                   <MyTextInput
                     label="Your e-mail address"
                     name="email"
@@ -88,13 +105,33 @@ const AddAdmin = () => {
                 </div>
               </div>
 
-              <button
-                disabled={!formik.isValid}
-                type="submit"
-                className="btn btn-primary btn-md"
+              <Snackbar
+                anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                open={addAdminLoginFail}
+                onClose={() => dispatch(handleClose())}
+                autoHideDuration={3000}
               >
-                SUBMIT
-              </button>
+                <Alert severity="error">This is user already existed</Alert>
+              </Snackbar>
+
+              <Snackbar
+                anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                open={addAdminLoginSuccess}
+                onClose={() => dispatch(handleCloseSecond())}
+                autoHideDuration={3000}
+              >
+                <Alert severity="success">User added</Alert>
+              </Snackbar>
+
+              <div className="form-row">
+                <button
+                  disabled={!formik.isValid}
+                  type="submit"
+                  className="btn btn-primary btn-md col-md-6 offset-md-3 col-sm-12"
+                >
+                  SUBMIT
+                </button>
+              </div>
             </Form>
           );
         }}

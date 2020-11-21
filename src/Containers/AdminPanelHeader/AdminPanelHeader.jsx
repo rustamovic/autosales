@@ -11,30 +11,30 @@ const AdminPanelHeader = ({ children }) => {
         flexDirection: "row",
       }}
     >
-      <div style={{ width: "20%", display: "flex", flexDirection: "column" }}>
+      <div style={{ width: "15%", display: "flex", flexDirection: "column" }}>
         <NavLink
-          style={{ textDecoration: "none", height: "30px" }}
+          style={{ textDecoration: "none", height: "30px", textAlign: "left" }}
           activeClassName="adminNav"
           to="/admin-add"
         >
-          Add Admin
+          Add User
         </NavLink>
         <NavLink
-          style={{ textDecoration: "none", height: "30px" }}
+          style={{ textDecoration: "none", height: "30px", textAlign: "left" }}
           activeClassName="adminNav"
           to="/admin-list"
         >
-          Admin List
+          Users List
         </NavLink>
         <NavLink
-          style={{ textDecoration: "none", height: "30px" }}
+          style={{ textDecoration: "none", height: "30px", textAlign: "left" }}
           activeClassName="adminNav"
           to="/admin-chat"
         >
-          Admin Chat
+           Chat
         </NavLink>
       </div>
-      <div style={{ width: "65%", marginLeft: "2%" }}>{children}</div>
+      <div style={{ width: "75%", marginLeft: "2%" }}>{children}</div>
     </div>
   );
 };

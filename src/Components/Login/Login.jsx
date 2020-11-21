@@ -8,10 +8,18 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import illustration from "../../Assets/PNG/pradoG.png";
 import logo from "../../Assets/logo512.png";
 import { ReactComponent as LoginIcon } from "feather-icons/dist/icons/log-in.svg";
-import { makeLogin } from "../../Redux/Auth/AuthActions";
+import {
+  handleCloseLoginPrompt,
+  makeLogin,
+} from "../../Redux/Auth/AuthActions";
 import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { beginLoginMine } from "../../Redux/Auth/AuthSelector";
+import {
+  beginLoginMine,
+  failureLoginMine,
+} from "../../Redux/Auth/AuthSelector";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 
 const Container = tw(
   ContainerBase
@@ -44,7 +52,9 @@ const IllustrationImage = styled.div`
   ${tw`m-12 xl:m-16 w-full max-w-sm bg-contain bg-center bg-no-repeat`}
 `;
 
-
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const Login = ({
   logoLinkUrl = "#",
@@ -59,6 +69,8 @@ const Login = ({
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
+  const failureLogin = useSelector(failureLoginMine);
+
   const fetchLogin = (e) => {
     e.preventDefault();
     dispatch(makeLogin(email, location, history));
@@ -99,6 +111,14 @@ const Login = ({
           <IllustrationImage imageSrc={illustrationImageSrc} />
         </IllustrationContainer>
       </Content>
+      <Snackbar
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        open={failureLogin}
+        onClose={() => dispatch(handleCloseLoginPrompt())}
+        autoHideDuration={3000}
+      >
+        <Alert severity="error">This is user is not registered!</Alert>
+      </Snackbar>
       <Backdrop style={{ zIndex: 999, color: "#fff" }} open={beginLogin}>
         <CircularProgress color="inherit" />
       </Backdrop>

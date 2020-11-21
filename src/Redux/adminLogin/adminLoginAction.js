@@ -9,6 +9,9 @@ export const ADD_ADMIN_BEGIN = "ADD_ADMIN_BEGIN";
 export const ADD_ADMIN_SUCCESS = "ADD_ADMIN_SUCCESS";
 export const ADD_ADMIN_FAIL = "ADD_ADMIN_FAIL";
 
+export const HANDLE_CLOSE = "HANDLE_CLOSE";
+export const HANDLE_CLOSE_SECOND = "HANDLE_CLOSE_SECOND";
+
 export const adminLogin = (email, password, history) => async (dispatch) => {
   dispatch({ type: ADMIN_LOGIN_BEGIN });
 
@@ -31,7 +34,7 @@ export const adminLogin = (email, password, history) => async (dispatch) => {
   }
 };
 
-export const addAdmin = (name, email, password, history) => async (dispatch) => {
+export const addAdmin = (name, email, password) => async (dispatch) => {
   dispatch({ type: ADD_ADMIN_BEGIN });
   dispatch(showLoading());
 
@@ -44,10 +47,22 @@ export const addAdmin = (name, email, password, history) => async (dispatch) => 
     await axiosInstance().post("/admin/add-admin", data);
     dispatch({ type: ADD_ADMIN_SUCCESS });
     dispatch(hideLoading());
-    history.push("/admin-list")
   } catch (error) {
     dispatch({ type: ADD_ADMIN_FAIL });
 
     dispatch(hideLoading());
   }
 };
+
+
+export const handleClose = () => {
+  return {
+    type: HANDLE_CLOSE
+  }
+};
+
+export const handleCloseSecond = () => {
+  return {
+    type: HANDLE_CLOSE_SECOND
+  }
+}

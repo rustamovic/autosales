@@ -7,6 +7,8 @@ export const FAILURE_LOGIN = "FAILURE_LOGIN";
 
 export const MAKE_LOGOUT = "MAKE_LOGOUT";
 
+export const HANDLE_CLOSE_PROMPT = "HANDLE_CLOSE_PROMPT"
+
 export const makeLogin = (emailAddress, location, history) => async (
   dispatch
 ) => {
@@ -34,6 +36,13 @@ export const makeLogin = (emailAddress, location, history) => async (
     dispatch(hideLoading());
   }
 };
+
+export const handleCloseLoginPrompt = () => {
+  return{
+    type: HANDLE_CLOSE_PROMPT
+  }
+}
+
 
 export const makeLogout = () => {
   return {
