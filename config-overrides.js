@@ -4,19 +4,7 @@ const {override} = require('customize-cra')
 
 const options = {
   stylesDir: path.join(__dirname, './src/index.css'),
-  themeVariables: [
-    '@primary-color',
-    '@secondary-color',
-    '@text-color',
-    '@heading-color',
-    '@nav-dark-bg',
-    '@header-text-color',
-    '@layout-header-background',
-    '@layout-footer-background',
-    '@nav-dark-text-color',
-    '@hor-nav-text-color',
-    '@nav-header-selected-text-color'
-  ],
+  themeVariables: [],
   indexFileName: 'index.html',
   generateOnce: false // generate color.less on each compilation
 };
