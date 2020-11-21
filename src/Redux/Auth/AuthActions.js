@@ -1,12 +1,15 @@
 import axiosInstance from "../../services/axiosInstance";
+import { showLoading, hideLoading } from "react-redux-loading-bar";
 
 export const BEGIN_LOGIN = "BEGIN_LOGIN";
 export const SUCCESS_LOGIN = "SUCCESS_LOGIN";
 export const FAILURE_LOGIN = "FAILURE_LOGIN";
 
-export const MAKE_LOGOUT = 'MAKE_LOGOUT';
+export const MAKE_LOGOUT = "MAKE_LOGOUT";
 
-export const makeLogin = (emailAddress, location, history) => async (dispatch) => {
+export const makeLogin = (emailAddress, location, history) => async (
+  dispatch
+) => {
   dispatch({ type: BEGIN_LOGIN });
 
   try {
@@ -23,13 +26,18 @@ export const makeLogin = (emailAddress, location, history) => async (dispatch) =
     } else {
       history.replace("/");
     }
+    dispatch(showLoading());
+    setTimeout(() => {
+      dispatch(hideLoading());
+    }, 1500);
   } catch (err) {
     dispatch({ type: FAILURE_LOGIN });
+    dispatch(hideLoading());
   }
 };
 
 export const makeLogout = () => {
   return {
-    type: MAKE_LOGOUT
-  }
-}
+    type: MAKE_LOGOUT,
+  };
+};

@@ -1,4 +1,5 @@
 import axiosInstance from "../../services/axiosInstance";
+import { showLoading, hideLoading } from "react-redux-loading-bar";
 
 export const BEGIN_ADD_CAR = "BEGIN_ADD_CAR";
 export const SUCCESS_ADD_CAR = "SUCCESS_ADD_CAR";
@@ -44,13 +45,18 @@ export const addCarServer = (
     formData.append("emailAddress", emailAddress);
     formData.append("phoneNumber", phoneNumber);
     formData.append("postCode", postCode);
-    formData.append("message", message)
+    formData.append("message", message);
 
     const response = await axiosInstance().post("/api/sell", formData);
     dispatch({ type: SUCCESS_ADD_CAR, payload: response });
-    history.push('/')
+    history.push("/");
+    dispatch(showLoading());
+    setTimeout(() => {
+      dispatch(hideLoading());
+    }, 1500);
   } catch (error) {
     dispatch({ type: FAIL_ADD_CAR });
+    dispatch(hideLoading());
     console.log(error);
   }
 };

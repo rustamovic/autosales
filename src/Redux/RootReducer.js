@@ -7,6 +7,7 @@ import adminLoginReducer from "./adminLogin/adminLoginReducer";
 import sellerReducer from "./seller/sellerReducer";
 import userProfileReducer from "./userProfile/userProfileReducer";
 import VinNumberReducer from "./VinNumber/VinNumberReducer";
+import { loadingBarReducer } from 'react-redux-loading-bar'
 
 export const rootReducer = combineReducers({
   auth: AuthReducer,
@@ -14,5 +15,6 @@ export const rootReducer = combineReducers({
   admin: adminLoginReducer,
   seller: sellerReducer,
   userProfile: userProfileReducer,
-  vinNumber: VinNumberReducer
+  vinNumber: VinNumberReducer,
+  loadingBar: loadingBarReducer,
 });

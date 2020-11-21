@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import logo from "../../Assets/logo512.png";
 import { useSelector, useDispatch } from "react-redux";
-import {useLocation} from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import HistoryIcon from "@material-ui/icons/History";
 import ChatIcon from "@material-ui/icons/Chat";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import LoadingBar from "react-redux-loading-bar";
 import {
   MDBNavbar,
   MDBNavbarBrand,
@@ -30,7 +31,6 @@ import { succesLoginMine } from "../../Redux/Auth/AuthSelector";
 
 // import Brand from "../../Assets/logo-2.png";
 
-
 const Header = () => {
   const [collapseID, setCollapseID] = useState(false);
   const succesLogin = useSelector(succesLoginMine);
@@ -47,7 +47,7 @@ const Header = () => {
     setCollapseID(!collapseID);
     dispatch(makeLogout());
     localStorage.removeItem("token");
-    localStorage.removeItem("email")
+    localStorage.removeItem("email");
   };
 
   const token = localStorage.getItem("token");
@@ -60,8 +60,8 @@ const Header = () => {
     />
   );
 
-  if(location?.pathname === "/admin"){
-    return null
+  if (location?.pathname === "/admin") {
+    return null;
   }
 
   return (
@@ -211,6 +211,7 @@ const Header = () => {
         </MDBNavbar>
         {collapseID && overlay}
       </div>
+      <LoadingBar style={{zIndex: "9999", backgroundColor: "blue"}} />
     </div>
   );
 };
