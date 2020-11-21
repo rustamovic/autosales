@@ -1,4 +1,9 @@
-import { BEGIN_ADD_CAR, SUCCESS_ADD_CAR, FAIL_ADD_CAR } from "./addCarActions";
+import {
+  BEGIN_ADD_CAR,
+  SUCCESS_ADD_CAR,
+  FAIL_ADD_CAR,
+  HANDLE_CLOSE_DROP,
+} from "./addCarActions";
 
 const initialState = {
   beginAddCar: false,
@@ -27,6 +32,11 @@ export default (state = initialState, action) => {
         beginAddCar: false,
         successAddCar: false,
         failAddCar: true,
+      };
+    case HANDLE_CLOSE_DROP:
+      return {
+        ...state,
+        failAddCar: false,
       };
     default:
       return state;

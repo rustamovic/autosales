@@ -11,3 +11,8 @@ export const countMine = createSelector(
     [seller],
     state => state.count
 );
+
+export const handlingDataMine = createSelector(
+    [seller],
+    state => state.handlingData
+);

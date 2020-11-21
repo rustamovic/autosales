@@ -8,15 +8,16 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import illustration from "../../Assets/PNG/pradoG.png";
 import logo from "../../Assets/logo512.png";
 import { ReactComponent as LoginIcon } from "feather-icons/dist/icons/log-in.svg";
-import Backdrop from "@material-ui/core/Backdrop";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import { adminLogin } from "../../Redux/adminLogin/adminLoginAction";
+import { adminLogin, handleAdminLoginDrop } from "../../Redux/adminLogin/adminLoginAction";
 import IconButton from "@material-ui/core/IconButton";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import {
   adminLoginBeginMine,
+  adminLoginFailMine,
 } from "../../Redux/adminLogin/adminLoginSelector";
+import CustomBackdrop from "../CustomBackdrop";
+import CustomSnackbar from "../CustomSnackbar";
 
 const Container = tw(
   ContainerBase
@@ -69,6 +70,7 @@ const AdminLogin = ({
   };
 
   const beginLoginAdmin = useSelector(adminLoginBeginMine);
+  const adminLoginFail = useSelector(adminLoginFailMine)
 
   return (
     <Container id="GColor" style={{ paddingTop: "65px" }}>
@@ -115,9 +117,15 @@ const AdminLogin = ({
           </MainContent>
         </MainContainer>
       </Content>
-      <Backdrop style={{ zIndex: 999, color: "#fff" }} open={beginLoginAdmin}>
-        <CircularProgress color="inherit" />
-      </Backdrop>
+
+      <CustomSnackbar
+        openSnack={adminLoginFail}
+        handleClose={() => dispatch(handleAdminLoginDrop())}
+        messageSnack="This is user is not registered"
+        severity="error"
+      />
+      <CustomBackdrop loadingOpen={beginLoginAdmin} />
+
     </Container>
   );
 };

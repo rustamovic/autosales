@@ -12,6 +12,8 @@ export const ADD_ADMIN_FAIL = "ADD_ADMIN_FAIL";
 export const HANDLE_CLOSE = "HANDLE_CLOSE";
 export const HANDLE_CLOSE_SECOND = "HANDLE_CLOSE_SECOND";
 
+export const HANDLE_ADMIN_LOGIN = "HANDLE_ADMIN_LOGIN"
+
 export const adminLogin = (email, password, history) => async (dispatch) => {
   dispatch({ type: ADMIN_LOGIN_BEGIN });
 
@@ -66,3 +68,9 @@ export const handleCloseSecond = () => {
     type: HANDLE_CLOSE_SECOND
   }
 }
+
+export const handleAdminLoginDrop = () => {
+  return {
+    type: HANDLE_ADMIN_LOGIN
+  }
+} 

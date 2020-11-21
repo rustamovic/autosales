@@ -8,16 +8,25 @@ import "./main.css";
 import MyTextInput from "../FormAfterRegister/MyTextInput";
 import MySelect from "../FormAfterRegister/MySelect";
 import MyTextArea from "../FormAfterRegister/MyTextarea";
-import { addCarServer } from "../../../../Redux/addCar/addCarActions";
+import {
+  addCarServer,
+  handleCloseActionDrop,
+} from "../../../../Redux/addCar/addCarActions";
 import { useHistory } from "react-router-dom";
 import {
   getVinDataMine,
   myOwnVinMine,
 } from "../../../../Redux/VinNumber/VinNumberSelector";
+import CustomSnackbar from "../../../CustomSnackbar";
+import { beginAddCarMine, failAddCarMine } from "../../../../Redux/addCar/addCarSelector";
+import CustomBackdrop from "../../../CustomBackdrop";
 
 const Career = () => {
   const getVinData = useSelector(getVinDataMine);
   const myOwnVin = useSelector(myOwnVinMine);
+  const failAddCar = useSelector(failAddCarMine);
+  const beginAddCar = useSelector(beginAddCarMine)
+
   const [files, setFiles] = useState([]);
 
   const dispatch = useDispatch();
@@ -393,6 +402,14 @@ const Career = () => {
                 );
               }}
             </Formik>
+
+            <CustomSnackbar
+              openSnack={failAddCar}
+              handleClose={() => dispatch(handleCloseActionDrop())}
+              messageSnack="Can not upload a form, there is issue pease try again!"
+              severity="error"
+            />
+            <CustomBackdrop loadingOpen={beginAddCar} />
           </MDBCol>
         </MDBRow>
       </MDBContainer>

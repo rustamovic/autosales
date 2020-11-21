@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import AdminPanelHeader from "../../Containers/AdminPanelHeader/AdminPanelHeader";
 import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
@@ -12,8 +12,10 @@ import TablePagination from "@material-ui/core/TablePagination";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { adminSeller } from "../../Redux/seller/sellerAction";
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import { adminSeller, handleSellerData } from "../../Redux/seller/sellerAction";
 import { countMine, sellerDataMine } from "../../Redux/seller/sellerSelector";
+import CustomModal from "./CustomModal";
 
 const useStyles = makeStyles({
   table: {
@@ -25,17 +27,10 @@ function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
 }
 
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
-];
-
 const AdminList = () => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [openModal, setOpenModal] = React.useState(false);
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -44,6 +39,11 @@ const AdminList = () => {
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
+  };
+
+  const handleOpen = (data) => {
+    setOpenModal(!openModal);
+    dispatch(handleSellerData(data))
   };
 
   const handleChangeRowsPerPage = (event) => {
@@ -67,30 +67,43 @@ const AdminList = () => {
               <TableCell align="right">Lastname</TableCell>
               <TableCell align="right">Email</TableCell>
               <TableCell align="right">Phone number</TableCell>
+              <TableCell align="right">More</TableCell>
               <TableCell align="right">Action</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {sellerData &&
-              sellerData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => (
-                <TableRow key={index}>
-                  <TableCell component="th" scope="row">
-                    {row.FirstName}
-                  </TableCell>
-                  <TableCell align="right">{row.LastName}</TableCell>
-                  <TableCell align="right">{row.emailAddress}</TableCell>
-                  <TableCell align="right">{row.phoneNumber}</TableCell>
-                  <TableCell align="right">
-                    <Button
-                      variant="contained"
-                      color="secondary"
-                      startIcon={<DeleteIcon />}
-                    >
-                      Delete
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              ))}
+              sellerData
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((row, index) => (
+                  <TableRow key={index}>
+                    <TableCell component="th" scope="row">
+                      {row.FirstName}
+                    </TableCell>
+                    <TableCell align="right">{row.LastName}</TableCell>
+                    <TableCell align="right">{row.emailAddress}</TableCell>
+                    <TableCell align="right">{row.phoneNumber}</TableCell>
+                    <TableCell align="right">
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        startIcon={<MoreHorizIcon />}
+                        onClick={() => handleOpen(row)}
+                      >
+                        More
+                      </Button>
+                    </TableCell>
+                    <TableCell align="right">
+                      <Button
+                        variant="contained"
+                        color="secondary"
+                        startIcon={<DeleteIcon />}
+                      >
+                        Delete
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
           </TableBody>
         </Table>
       </TableContainer>
@@ -103,6 +116,7 @@ const AdminList = () => {
         onChangePage={handleChangePage}
         onChangeRowsPerPage={handleChangeRowsPerPage}
       />
+      <CustomModal open={openModal} handleClose={handleOpen} />
     </AdminPanelHeader>
   );
 };

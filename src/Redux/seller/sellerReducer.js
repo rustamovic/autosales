@@ -5,6 +5,7 @@ import {
   ADMIN_SELLER_BY_ID_BEGIN,
   ADMIN_SELLER_BY_ID_SUCCESS,
   ADMIN_SELLER_BY_ID_FAIL,
+  HANDLE_SELLER_DATA
 } from "./sellerAction";
 
 const initialState = {
@@ -17,6 +18,7 @@ const initialState = {
   sellerByIdSuccess: false,
   sellerByIdFail: false,
   sellerByIdData: [],
+  handlingData: {}
 };
 
 export default (state = initialState, action) => {
@@ -62,6 +64,11 @@ export default (state = initialState, action) => {
         sellerByIdSuccess: false,
         sellerByIdFail: true,
       };
+    case HANDLE_SELLER_DATA:
+      return {
+        ...state,
+        handlingData: action.payload
+      }
     default:
       return state;
   }

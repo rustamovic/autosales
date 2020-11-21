@@ -5,6 +5,8 @@ export const BEGIN_ADD_CAR = "BEGIN_ADD_CAR";
 export const SUCCESS_ADD_CAR = "SUCCESS_ADD_CAR";
 export const FAIL_ADD_CAR = "FAIL_ADD_CAR";
 
+export const HANDLE_CLOSE_DROP = "HANDLE_CLOSE_DROP"
+
 export const addCarServer = (
   photos,
   vin,
@@ -58,3 +60,9 @@ export const addCarServer = (
     dispatch(hideLoading());
   }
 };
+
+export const handleCloseActionDrop = () => {
+  return {
+    type: HANDLE_CLOSE_DROP
+  }
+}

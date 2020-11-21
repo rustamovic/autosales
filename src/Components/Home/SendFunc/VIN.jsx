@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { MDBContainer, MDBCol } from "mdbreact";
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector, useDispatch } from "react-redux";
 import { ReactComponent as SubmitButtonIcon } from "feather-icons/dist/icons/log-in.svg";
 import styled from "styled-components";
 import tw from "twin.macro";
@@ -10,7 +10,7 @@ import { useHistory } from "react-router-dom";
 import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { getVinDataBeginMine } from "../../../Redux/VinNumber/VinNumberSelector";
-
+import CustomBackdrop from "../../CustomBackdrop";
 
 const Agent = () => {
   const dispatch = useDispatch();
@@ -88,9 +88,7 @@ const Agent = () => {
           </div>
         </form>
       </MDBCol>
-      <Backdrop style={{zIndex: 999, color: '#fff'}} open={getVinDataBegin}>
-        <CircularProgress color="inherit" />
-      </Backdrop>
+      <CustomBackdrop loadingOpen={getVinDataBegin} />
     </MDBContainer>
   );
 };

@@ -12,6 +12,11 @@ export const adminLoginSuccessMine = createSelector(
     state => state.adminLoginSuccess
 );
 
+export const adminLoginFailMine = createSelector(
+    [admin],
+    state => state.adminLoginFail
+)
+
 export const addAdminLoginFailMine = createSelector(
     [admin],
     state => state.addAdminLoginFail
@@ -20,4 +25,9 @@ export const addAdminLoginFailMine = createSelector(
 export const addAdminLoginSuccessMineSecond = createSelector(
     [admin],
     state => state.addAdminLoginSuccess
+);
+
+export const addAdminLoginBeginMine = createSelector(
+    [admin],
+    state => state.addAdminLoginBegin
 );

@@ -12,14 +12,15 @@ import {
   handleCloseLoginPrompt,
   makeLogin,
 } from "../../Redux/Auth/AuthActions";
-import Backdrop from "@material-ui/core/Backdrop";
-import CircularProgress from "@material-ui/core/CircularProgress";
+
 import {
   beginLoginMine,
   failureLoginMine,
 } from "../../Redux/Auth/AuthSelector";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
+import CustomBackdrop from "../CustomBackdrop";
+import CustomSnackbar from "../CustomSnackbar";
 
 const Container = tw(
   ContainerBase
@@ -111,17 +112,14 @@ const Login = ({
           <IllustrationImage imageSrc={illustrationImageSrc} />
         </IllustrationContainer>
       </Content>
-      <Snackbar
-        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-        open={failureLogin}
-        onClose={() => dispatch(handleCloseLoginPrompt())}
-        autoHideDuration={3000}
-      >
-        <Alert severity="error">This is user is not registered!</Alert>
-      </Snackbar>
-      <Backdrop style={{ zIndex: 999, color: "#fff" }} open={beginLogin}>
-        <CircularProgress color="inherit" />
-      </Backdrop>
+
+      <CustomSnackbar
+        openSnack={failureLogin}
+        handleClose={() => dispatch(handleCloseLoginPrompt())}
+        messageSnack="This is user is not registered!"
+        severity="error"
+      />
+      <CustomBackdrop loadingOpen={beginLogin} />
     </Container>
   );
 };

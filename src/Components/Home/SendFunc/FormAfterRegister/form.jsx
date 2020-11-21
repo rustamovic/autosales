@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { addCarServer } from "../../../../Redux/addCar/addCarActions";
+import { addCarServer, handleCloseActionDrop } from "../../../../Redux/addCar/addCarActions";
 import { DropzoneArea } from "material-ui-dropzone";
 import "../stepper/main";
 import MyTextInput from "./MyTextInput";
@@ -14,12 +14,17 @@ import {
   getVinDataMine,
   myOwnVinMine,
 } from "../../../../Redux/VinNumber/VinNumberSelector";
+import CustomSnackbar from "../../../CustomSnackbar";
+import { beginAddCarMine, failAddCarMine } from "../../../../Redux/addCar/addCarSelector";
+import CustomBackdrop from "../../../CustomBackdrop";
 
 const Career = () => {
   const [files, setFiles] = useState([]);
   const dispatch = useDispatch();
   const getVinData = useSelector(getVinDataMine);
   const myOwnVin = useSelector(myOwnVinMine);
+  const failAddCar = useSelector(failAddCarMine);
+  const beginAddCar = useSelector(beginAddCarMine)
   const history = useHistory();
   const formData = {
     VINN: myOwnVin,
@@ -381,6 +386,14 @@ const Career = () => {
                 );
               }}
             </Formik>
+            <CustomSnackbar
+              openSnack={failAddCar}
+              handleClose={() => dispatch(handleCloseActionDrop())}
+              messageSnack="Can not upload a form, there is issue pease try again!"
+              severity="error"
+            />
+
+            <CustomBackdrop loadingOpen={beginAddCar} />
           </MDBCol>
         </MDBRow>
       </MDBContainer>

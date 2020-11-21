@@ -1,29 +1,27 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form } from "formik";
-import MuiAlert from "@material-ui/lab/Alert";
 import * as Yup from "yup";
 import AdminPanelHeader from "../../Containers/AdminPanelHeader/AdminPanelHeader";
 import MyTextInput from "../Home/SendFunc/FormAfterRegister/MyTextInput";
-import Snackbar from "@material-ui/core/Snackbar";
 import {
   addAdmin,
   handleClose,
   handleCloseSecond,
 } from "../../Redux/adminLogin/adminLoginAction";
 import {
+  addAdminLoginBeginMine,
   addAdminLoginFailMine,
   addAdminLoginSuccessMineSecond,
 } from "../../Redux/adminLogin/adminLoginSelector";
-
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
+import CustomBackdrop from "../CustomBackdrop";
+import CustomSnackbar from "../CustomSnackbar";
 
 const AddAdmin = () => {
   const dispatch = useDispatch();
   const addAdminLoginFail = useSelector(addAdminLoginFailMine);
   const addAdminLoginSuccess = useSelector(addAdminLoginSuccessMineSecond);
+  const addAdminLoginBegin = useSelector(addAdminLoginBeginMine);
 
   const formData = {
     Lname: "",
@@ -105,24 +103,6 @@ const AddAdmin = () => {
                 </div>
               </div>
 
-              <Snackbar
-                anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-                open={addAdminLoginFail}
-                onClose={() => dispatch(handleClose())}
-                autoHideDuration={3000}
-              >
-                <Alert severity="error">This is user already existed</Alert>
-              </Snackbar>
-
-              <Snackbar
-                anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-                open={addAdminLoginSuccess}
-                onClose={() => dispatch(handleCloseSecond())}
-                autoHideDuration={3000}
-              >
-                <Alert severity="success">User added</Alert>
-              </Snackbar>
-
               <div className="form-row">
                 <button
                   disabled={!formik.isValid}
@@ -136,6 +116,20 @@ const AddAdmin = () => {
           );
         }}
       </Formik>
+      <CustomSnackbar
+        openSnack={addAdminLoginFail}
+        handleClose={() => dispatch(handleClose())}
+        messageSnack="This is user already existed"
+        severity="error"
+      />
+
+      <CustomSnackbar
+        openSnack={addAdminLoginSuccess}
+        handleClose={() => dispatch(handleCloseSecond())}
+        messageSnack="User added"
+        severity="success"
+      />
+      <CustomBackdrop loadingOpen={addAdminLoginBegin} />
     </AdminPanelHeader>
   );
 };

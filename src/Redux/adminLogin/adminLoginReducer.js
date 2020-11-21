@@ -6,7 +6,8 @@ import {
   ADD_ADMIN_SUCCESS,
   ADD_ADMIN_FAIL,
   HANDLE_CLOSE,
-  HANDLE_CLOSE_SECOND
+  HANDLE_CLOSE_SECOND,
+  HANDLE_ADMIN_LOGIN
 } from "./adminLoginAction";
 
 const initialState = {
@@ -66,7 +67,12 @@ export default (state = initialState, action) => {
     case HANDLE_CLOSE_SECOND:
       return {
         addAdminLoginSuccess: false,
-      }
+      };
+    case HANDLE_ADMIN_LOGIN:
+      return {
+        ...state,
+        adminLoginFail: false
+      };
     default:
       return state;
   }

@@ -10,6 +10,9 @@ export const ADMIN_SELLER_BY_ID_BEGIN = "ADMIN_SELLER_BY_ID_BEGIN";
 export const ADMIN_SELLER_BY_ID_SUCCESS = "ADMIN_SELLER_BY_ID_SUCCESS";
 export const ADMIN_SELLER_BY_ID_FAIL = "ADMIN_SELLER_BY_ID_FAIL";
 
+
+export const HANDLE_SELLER_DATA = "HANDLE_SELLER_DATA";
+
 export const adminSeller = () => async (dispatch) => {
   dispatch({ type: ADMIN_SELLER_BEGIN });
   dispatch(showLoading());
@@ -40,3 +43,10 @@ export const getSellerById = (id) => async (dispatch) => {
     dispatch(hideLoading());
   }
 };
+
+export const handleSellerData = (data) => {
+  return {
+    type: HANDLE_SELLER_DATA,
+    payload: data
+  }
+}
