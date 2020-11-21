@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { userProfileDataMine } from "../../Redux/userProfile/userProfileSelector";
-import { handleObjectData, userProfileLogin } from "../../Redux/userProfile/userProfileAction";
+import {
+  handleObjectData,
+  userProfileLogin,
+} from "../../Redux/userProfile/userProfileAction";
 import {
   MDBCard,
   MDBCardBody,
@@ -33,23 +36,22 @@ const CardExample = () => {
         {userProfileData &&
           userProfileData.map((data, index) => {
             return (
-              <MDBCol md="4" style={{marginTop: "20px"}} key={index}>
+              <MDBCol md="4" style={{ marginTop: "20px" }} key={index}>
                 <MDBCard>
                   <MDBCardImage
+                    id="Hcards"
                     top
                     src={data.Photos[0]}
                     overlay="white-slight"
-                    style={{objectFit: "contain !important", height: "250px"}}
+                    style={{ height: "250px" }}
                     hover
                     waves
-                    alt="MDBCard image cap"
+                    alt="image"
                   />
                   <MDBCardBody>
                     <MDBCardTitle>{data.FirstName}</MDBCardTitle>
                     <hr />
-                    <MDBCardText>
-                      {data.transmission}
-                    </MDBCardText>
+                    <MDBCardText>{data.transmission}</MDBCardText>
                     <MDBLink
                       to={`/Fullhistory/${index}`}
                       className="black-text d-flex justify-content-end"

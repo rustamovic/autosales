@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import {useSelector} from 'react-redux';
+import { useSelector } from "react-redux";
 import MobileStepper from "@material-ui/core/MobileStepper";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
@@ -11,7 +11,6 @@ import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import { detailDataMine } from "../../Redux/userProfile/userProfileSelector";
-
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -83,18 +82,17 @@ const SwipeableTextMobileStepper = () => {
     setActiveStep(step);
   };
 
- 
   return (
     <MDBContainer className={classes.root}>
       <h1 className="h1-responsive my-4 text-primary">
-        Details of submitted vehicles
+        Details of submitted vehicle
       </h1>
       <MDBRow>
         <MDBCol md="6">
           <div>
-            <Paper square elevation={0} className={classes.header}>
+            {/* <Paper square elevation={0} className={classes.header}>
               <Typography>{tutorialSteps[activeStep].label}</Typography>
-            </Paper>
+            </Paper> */}
             <AutoPlaySwipeableViews
               axis={theme.direction === "rtl" ? "x-reverse" : "x"}
               index={activeStep}
@@ -104,11 +102,7 @@ const SwipeableTextMobileStepper = () => {
               {detailData?.Photos?.map((step, index) => (
                 <div key={index}>
                   {Math.abs(activeStep - index) <= 2 ? (
-                    <img
-                      className={classes.img}
-                      src={step}
-                      alt={index}
-                    />
+                    <img className={classes.img} src={step} alt={index} />
                   ) : null}
                 </div>
               ))}
@@ -157,7 +151,8 @@ const SwipeableTextMobileStepper = () => {
             <strong>Car Model: </strong> {detailData?.carModel}
           </h3>
           <h3>
-            <strong>Exact Mileage: </strong>{detailData?.carMileage}
+            <strong>Exact Mileage: </strong>
+            {detailData?.carMileage}
           </h3>
           <h3>
             <strong>Exterior Color: </strong> {detailData?.carColor}
@@ -169,7 +164,8 @@ const SwipeableTextMobileStepper = () => {
             <strong>Transmission: </strong> {detailData?.transmision}
           </h3>
           <h3>
-            <strong>Condition of vehicle: </strong> {detailData?.VehicleCondition}
+            <strong>Condition of vehicle: </strong>{" "}
+            {detailData?.VehicleCondition}
           </h3>
         </MDBCol>
       </MDBRow>
