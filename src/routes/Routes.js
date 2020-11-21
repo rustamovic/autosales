@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Loader from "./Loader/Loading";
 import { Footer } from "../Containers/Footer/footer";
 import Header from "../Containers/Header/header";
+import ProtectedRoute from "./ProtectedRoute";
 const Home = lazy(() => import("../Components/Home/Home"));
 const FAQ = lazy(() => import("../Components/FAQ/FAQ"));
 const Login = lazy(() => import("../Components/Login/Login"));
@@ -18,7 +19,7 @@ const Form = lazy(() =>
 );
 const History = lazy(() => import("../Components/History/Components"));
 const FullHistory = lazy(() => import("../Components/History/FullC"));
-const MapMine = lazy(() => import("../Components/MapMine"));
+// const MapMine = lazy(() => import("../Components/MapMine"));
 
 const Routes = () => {
   return (
@@ -44,10 +45,9 @@ const Routes = () => {
             <Route exact path="/termsofservice" component={Terms} />
             <Route exact path="/privacyvspolicy" component={Policy} />
             <Route exact path="/stepper" component={Stepper} />
-            <Route exact path="/form" component={Form} />
-            <Route exact path="/history" component={History} />
-            <Route exact path="/map" component={MapMine} />
-            <Route exact path="/Fullhistory/:id" component={FullHistory} />
+            <ProtectedRoute exact path="/form" component={Form} />
+            <ProtectedRoute exact path="/history" component={History} />
+            <ProtectedRoute exact path="/Fullhistory/:id" component={FullHistory} />
             <Route path="*" component={NotFound} />
           </Switch>
           <Footer />
@@ -58,3 +58,5 @@ const Routes = () => {
 };
 
 export default React.memo(Routes);
+
+// <Route exact path="/map" component={MapMine} />

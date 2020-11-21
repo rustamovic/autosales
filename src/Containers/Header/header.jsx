@@ -45,6 +45,7 @@ const Header = () => {
     setCollapseID(!collapseID);
     dispatch(makeLogout());
     localStorage.removeItem("token");
+    localStorage.removeItem("email")
   };
 
   const token = localStorage.getItem("token");

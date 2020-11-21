@@ -11,7 +11,7 @@ import { ReactComponent as LoginIcon } from "feather-icons/dist/icons/log-in.svg
 import { makeLogin } from "../../Redux/Auth/AuthActions";
 import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { beginLoginMine, postsMine, succesLoginMine } from "../../Redux/Auth/AuthSelector";
+import { beginLoginMine, succesLoginMine } from "../../Redux/Auth/AuthSelector";
 
 const Container = tw(
   ContainerBase
@@ -68,11 +68,10 @@ const Login = ({
   // const beginLogin = useSelector(beginLoginMine);
   const successLogin = useSelector(succesLoginMine);
   const beginLogin = useSelector(beginLoginMine);
-  const posts = useSelector(postsMine);
 
   if (successLogin) {
     if (location.state) {
-      history.replace(location.state.from.pathname);
+      history.replace(location.state?.from?.pathname);
     } else {
       history.replace("/");
     }
