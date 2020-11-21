@@ -37,8 +37,6 @@ const Header = () => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  console.log(location)
-
   const toggleCollapse = () => {
     window.scrollTo(0, 0);
     setCollapseID(!collapseID);
