@@ -10,7 +10,7 @@ export const ADD_ADMIN_SUCCESS = 'ADD_ADMIN_SUCCESS';
 export const ADD_ADMIN_FAIL = 'ADD_ADMIN_FAIL';
 
 
-export const adminLogin = (email, password) => async dispatch => {
+export const adminLogin = (email, password, history) => async dispatch => {
     dispatch({type: ADMIN_LOGIN_BEGIN});
 
     try {
@@ -21,6 +21,7 @@ export const adminLogin = (email, password) => async dispatch => {
 
         await axiosInstance().post('/admin/login', data);
         dispatch({type: ADMIN_LOGIN_SUCCESS});
+        history.push("/admin-panel");
     } catch (error) {
         dispatch({type: ADMIN_LOGIN_FAIL});
     }

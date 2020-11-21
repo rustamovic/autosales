@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Container as ContainerBase } from "../Misk/Layout";
@@ -17,7 +16,6 @@ import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import {
   adminLoginBeginMine,
-  adminLoginSuccessMine,
 } from "../../Redux/adminLogin/adminLoginSelector";
 
 const Container = tw(
@@ -49,7 +47,7 @@ const SubmitButton = styled.button`
 const AdminLogin = ({
   logoLinkUrl = "#",
   illustrationImageSrc = illustration,
-  headingText = "Sign In To TRUST AUTO",
+  headingText = "Sign In To Admin Panel",
   submitButtonText = "Sign In",
   SubmitButtonIcon = LoginIcon,
   forgotPasswordUrl = "#",
@@ -60,23 +58,18 @@ const AdminLogin = ({
   const [showPas, setShowPas] = useState(false);
 
   const dispatch = useDispatch();
+  const history = useHistory();
   const fetchLogin = (e) => {
     e.preventDefault();
-    dispatch(adminLogin(email, password));
+    dispatch(adminLogin(email, password, history));
   };
 
   const handleShowPass = () => {
     setShowPas(!showPas);
   };
-  const history = useHistory();
 
-  // const beginLogin = useSelector(beginLoginMine);
-  const successLoginAdmin = useSelector(adminLoginSuccessMine);
   const beginLoginAdmin = useSelector(adminLoginBeginMine);
 
-  if (successLoginAdmin) {
-    history.push("/admin-panel");
-  }
   return (
     <Container id="GColor" style={{ paddingTop: "65px" }}>
       <Content>
