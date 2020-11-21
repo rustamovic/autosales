@@ -61,7 +61,6 @@ const useStyles = makeStyles((theme) => ({
     display: "block",
     width: "100%",
     overflow: "hidden",
-    width: "100%",
   },
 }));
 
@@ -85,7 +84,6 @@ const SwipeableTextMobileStepper = () => {
   };
 
  
-  console.log(detailData, "detailData")
   return (
     <MDBContainer className={classes.root}>
       <h1 className="h1-responsive my-4 text-primary">

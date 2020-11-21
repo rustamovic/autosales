@@ -33,13 +33,13 @@ const CardExample = () => {
         {userProfileData &&
           userProfileData.map((data, index) => {
             return (
-              <MDBCol md="4" key={index}>
+              <MDBCol md="4" style={{marginTop: "20px"}} key={index}>
                 <MDBCard>
                   <MDBCardImage
                     top
                     src={data.Photos[0]}
                     overlay="white-slight"
-                    style={{objectFit: "contain !important"}}
+                    style={{objectFit: "contain !important", height: "250px"}}
                     hover
                     waves
                     alt="MDBCard image cap"
