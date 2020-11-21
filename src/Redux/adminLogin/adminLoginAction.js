@@ -33,6 +33,7 @@ export const adminLogin = (email, password, history) => async (dispatch) => {
 
 export const addAdmin = (name, email, password) => async (dispatch) => {
   dispatch({ type: ADD_ADMIN_BEGIN });
+  dispatch(showLoading());
 
   try {
     const data = {
@@ -42,7 +43,6 @@ export const addAdmin = (name, email, password) => async (dispatch) => {
     };
     await axiosInstance().post("/admin/add-admin", data);
     dispatch({ type: ADD_ADMIN_SUCCESS });
-    dispatch(showLoading());
     dispatch(hideLoading());
   } catch (error) {
     dispatch({ type: ADD_ADMIN_FAIL });

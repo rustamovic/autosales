@@ -12,6 +12,7 @@ const initialState = {
   sellerSuccess: false,
   sellerFail: false,
   sellerData: [],
+  count: 0,
   sellerByIdBegin: false,
   sellerByIdSuccess: false,
   sellerByIdFail: false,
@@ -32,6 +33,7 @@ export default (state = initialState, action) => {
         sellerSuccess: true,
         sellerFail: false,
         sellerData: action.payload,
+        count: action.count
       };
     case ADMIN_SELLER_FAIL:
       return {

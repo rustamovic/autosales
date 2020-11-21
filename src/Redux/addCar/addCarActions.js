@@ -26,6 +26,7 @@ export const addCarServer = (
   history
 ) => async (dispatch) => {
   dispatch({ type: BEGIN_ADD_CAR });
+  dispatch(showLoading());
 
   try {
     let formData = new FormData();
@@ -50,13 +51,10 @@ export const addCarServer = (
     const response = await axiosInstance().post("/api/sell", formData);
     dispatch({ type: SUCCESS_ADD_CAR, payload: response });
     history.push("/");
-    dispatch(showLoading());
-    setTimeout(() => {
-      dispatch(hideLoading());
-    }, 1500);
+
+    dispatch(hideLoading());
   } catch (error) {
     dispatch({ type: FAIL_ADD_CAR });
     dispatch(hideLoading());
-    console.log(error);
   }
 };

@@ -11,6 +11,7 @@ export const makeLogin = (emailAddress, location, history) => async (
   dispatch
 ) => {
   dispatch({ type: BEGIN_LOGIN });
+  dispatch(showLoading());
 
   try {
     const response = await axiosInstance().post("/login", {
@@ -26,10 +27,8 @@ export const makeLogin = (emailAddress, location, history) => async (
     } else {
       history.replace("/");
     }
-    dispatch(showLoading());
-    setTimeout(() => {
-      dispatch(hideLoading());
-    }, 1500);
+
+    dispatch(hideLoading());
   } catch (err) {
     dispatch({ type: FAILURE_LOGIN });
     dispatch(hideLoading());

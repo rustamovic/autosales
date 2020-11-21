@@ -10,17 +10,15 @@ export const HANDLE_DATA = "HANDLE_DATA";
 
 export const userProfileLogin = () => async (dispatch) => {
   dispatch({ type: USER_PROFILE_BEGIN });
+  dispatch(showLoading());
 
   try {
     const email = localStorage.getItem("email");
     const response = await axiosInstance().get(`/profile?email=${email}`);
 
     dispatch({ type: USER_PROFILE_SUCCESS, payload: response.data.seller });
-    dispatch(showLoading());
 
-    setTimeout(() => {
-      dispatch(hideLoading());
-    }, 1500);
+    dispatch(hideLoading());
   } catch (error) {
     dispatch({ type: USER_PROFILE_FAIL });
     dispatch(hideLoading());

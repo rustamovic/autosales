@@ -6,8 +6,7 @@ const AdminPanelHeader = ({ children }) => {
     <div
       style={{
         width: "90%",
-        height: "50vh",
-        margin: "100px auto",
+        margin: "150px auto",
         display: "flex",
         flexDirection: "row",
       }}
@@ -35,7 +34,7 @@ const AdminPanelHeader = ({ children }) => {
           Admin Chat
         </NavLink>
       </div>
-      <div style={{ width: "65%" }}>{children}</div>
+      <div style={{ width: "65%", marginLeft: "2%" }}>{children}</div>
     </div>
   );
 };

@@ -7,6 +7,7 @@ export const GET_VIN_NUMBER_FAIL = "GET_VIN_NUMBER_FAIL";
 
 export const getVinNumber = (vinNumber, history) => async (dispatch) => {
   dispatch({ type: GET_VIN_NUMBER_BEGIN });
+  dispatch(showLoading());
 
   try {
     const token = localStorage.getItem("token");
@@ -26,10 +27,8 @@ export const getVinNumber = (vinNumber, history) => async (dispatch) => {
     } else {
       history.push("/stepper");
     }
-    dispatch(showLoading());
-    setTimeout(() => {
-      dispatch(hideLoading());
-    }, 1500);
+
+    dispatch(hideLoading());
   } catch (error) {
     dispatch({ type: GET_VIN_NUMBER_FAIL });
     dispatch(hideLoading());
