@@ -4,6 +4,10 @@ import Loader from "./Loader/Loading";
 import { Footer } from "../Containers/Footer/footer";
 import Header from "../Containers/Header/header";
 import ProtectedRoute from "./ProtectedRoute";
+
+const ChatAdmin = lazy(() => import("../Components/AdminPanel/ChatAdmin"));
+const AdminList = lazy(() => import("../Components/AdminPanel/AdminList"));
+const AddAdmin = lazy(() => import("../Components/AdminPanel/AddAdmin"));
 const Home = lazy(() => import("../Components/Home/Home"));
 const FAQ = lazy(() => import("../Components/FAQ/FAQ"));
 const Login = lazy(() => import("../Components/Login/Login"));
@@ -19,7 +23,7 @@ const Form = lazy(() =>
 );
 const History = lazy(() => import("../Components/History/Components"));
 const FullHistory = lazy(() => import("../Components/History/FullC"));
-const AdminLogin = lazy(() => import("../Components/AdminLogin/AdminLogin"))
+const AdminLogin = lazy(() => import("../Components/AdminLogin/AdminLogin"));
 // const MapMine = lazy(() => import("../Components/MapMine"));
 
 const Routes = () => {
@@ -47,9 +51,16 @@ const Routes = () => {
             <Route exact path="/privacyvspolicy" component={Policy} />
             <Route exact path="/stepper" component={Stepper} />
             <Route exact path="/admin" component={AdminLogin} />
+            <Route exact path="/admin-add" component={AddAdmin} />
+            <Route exact path="/admin-list" component={AdminList} />
+            <Route exact path="/admin-chat" component={ChatAdmin} />
             <ProtectedRoute exact path="/form" component={Form} />
             <ProtectedRoute exact path="/history" component={History} />
-            <ProtectedRoute exact path="/Fullhistory/:id" component={FullHistory} />
+            <ProtectedRoute
+              exact
+              path="/Fullhistory/:id"
+              component={FullHistory}
+            />
             <Route path="*" component={NotFound} />
           </Switch>
           <Footer />
