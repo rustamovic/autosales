@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import AdminPanelHeader from "../../Containers/AdminPanelHeader/AdminPanelHeader";
 import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
@@ -12,10 +12,18 @@ import TablePagination from "@material-ui/core/TablePagination";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import { adminSeller, handleSellerData } from "../../Redux/seller/sellerAction";
-import { countMine, sellerDataMine } from "../../Redux/seller/sellerSelector";
+import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import { adminSeller, deleteSellerById, handleDeleteCloseFail, handleDeleteCloseSuccess, handleSellerData } from "../../Redux/seller/sellerAction";
+import {
+  countMine,
+  deleteUserByIdBeginMine,
+  deleteUserByIdFailMine,
+  deleteUserByIdSuccessMine,
+  sellerDataMine,
+} from "../../Redux/seller/sellerSelector";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import CustomModal from "./CustomModal";
+import CustomSnackbar from "../CustomSnackbar";
 
 const useStyles = makeStyles({
   table: {
@@ -36,6 +44,9 @@ const AdminList = () => {
 
   const sellerData = useSelector(sellerDataMine);
   const count = useSelector(countMine);
+  const deleteUserByIdBegin = useSelector(deleteUserByIdBeginMine);
+  const deleteUserByIdSuccess = useSelector(deleteUserByIdSuccessMine);
+  const deleteUserByIdFail = useSelector(deleteUserByIdFailMine);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -43,7 +54,7 @@ const AdminList = () => {
 
   const handleOpen = (data) => {
     setOpenModal(!openModal);
-    dispatch(handleSellerData(data))
+    dispatch(handleSellerData(data));
   };
 
   const handleChangeRowsPerPage = (event) => {
@@ -97,9 +108,10 @@ const AdminList = () => {
                       <Button
                         variant="contained"
                         color="secondary"
+                        onClick={() => dispatch(deleteSellerById(row?._id))}
                         startIcon={<DeleteIcon />}
                       >
-                        Delete
+                        {deleteUserByIdBegin ? <CircularProgress style={{width: "20px", height: "20px", color: "white"}} /> : "Delete"}
                       </Button>
                     </TableCell>
                   </TableRow>
@@ -117,6 +129,20 @@ const AdminList = () => {
         onChangeRowsPerPage={handleChangeRowsPerPage}
       />
       <CustomModal open={openModal} handleClose={handleOpen} />
+
+      <CustomSnackbar
+        openSnack={deleteUserByIdSuccess}
+        severity="success"
+        messageSnack="Successfully Deleted"
+        handleClose={() => dispatch(handleDeleteCloseSuccess())}
+      />
+
+      <CustomSnackbar
+        openSnack={deleteUserByIdFail}
+        severity="error"
+        messageSnack="There is an error of deleting!"
+        handleClose={() => dispatch(handleDeleteCloseFail())}
+      />
     </AdminPanelHeader>
   );
 };

@@ -4,6 +4,7 @@ import Loader from "./Loader/Loading";
 import { Footer } from "../Containers/Footer/footer";
 import Header from "../Containers/Header/header";
 import ProtectedRoute from "./ProtectedRoute";
+import AdminProtectedRoute from "./AdminProtectedRoute";
 
 const ChatAdmin = lazy(() => import("../Components/AdminPanel/ChatAdmin"));
 const AdminList = lazy(() => import("../Components/AdminPanel/AdminList"));
@@ -51,9 +52,9 @@ const Routes = () => {
             <Route exact path="/privacyvspolicy" component={Policy} />
             <Route exact path="/stepper" component={Stepper} />
             <Route exact path="/admin" component={AdminLogin} />
-            <Route exact path="/admin-add" component={AddAdmin} />
-            <Route exact path="/admin-list" component={AdminList} />
-            <Route exact path="/admin-chat" component={ChatAdmin} />
+            <AdminProtectedRoute exact path="/admin-add" component={AddAdmin} />
+            <AdminProtectedRoute exact path="/admin-list" component={AdminList} />
+            <AdminProtectedRoute exact path="/admin-chat" component={ChatAdmin} />
             <ProtectedRoute exact path="/form" component={Form} />
             <ProtectedRoute exact path="/history" component={History} />
             <ProtectedRoute

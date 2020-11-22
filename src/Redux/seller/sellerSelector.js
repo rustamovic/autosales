@@ -16,3 +16,18 @@ export const handlingDataMine = createSelector(
     [seller],
     state => state.handlingData
 );
+
+export const deleteUserByIdBeginMine = createSelector(
+    [seller],
+    state => state.deleteUserByIdBegin
+);
+
+export const deleteUserByIdSuccessMine = createSelector(
+    [seller],
+    state => state.deleteUserByIdSuccess
+);
+
+export const deleteUserByIdFailMine = createSelector(
+    [seller],
+    state => state.deleteUserByIdFail
+);

@@ -12,10 +12,12 @@ export const ADD_ADMIN_FAIL = "ADD_ADMIN_FAIL";
 export const HANDLE_CLOSE = "HANDLE_CLOSE";
 export const HANDLE_CLOSE_SECOND = "HANDLE_CLOSE_SECOND";
 
-export const HANDLE_ADMIN_LOGIN = "HANDLE_ADMIN_LOGIN"
+export const HANDLE_ADMIN_LOGIN = "HANDLE_ADMIN_LOGIN";
 
 export const adminLogin = (email, password, history) => async (dispatch) => {
   dispatch({ type: ADMIN_LOGIN_BEGIN });
+  dispatch(showLoading());
+
 
   try {
     const data = {
@@ -23,13 +25,12 @@ export const adminLogin = (email, password, history) => async (dispatch) => {
       password: password,
     };
 
-    await axiosInstance().post("/admin/login", data);
+    const response = await axiosInstance().post("/admin/login", data);
     dispatch({ type: ADMIN_LOGIN_SUCCESS });
     history.push("/admin-list");
-    dispatch(showLoading());
-    setTimeout(() => {
-      dispatch(hideLoading());
-    }, 1500);
+
+    localStorage.setItem("token", response.data)
+    dispatch(hideLoading());
   } catch (error) {
     dispatch({ type: ADMIN_LOGIN_FAIL });
     dispatch(hideLoading());
@@ -56,21 +57,20 @@ export const addAdmin = (name, email, password) => async (dispatch) => {
   }
 };
 
-
 export const handleClose = () => {
   return {
-    type: HANDLE_CLOSE
-  }
+    type: HANDLE_CLOSE,
+  };
 };
 
 export const handleCloseSecond = () => {
   return {
-    type: HANDLE_CLOSE_SECOND
-  }
-}
+    type: HANDLE_CLOSE_SECOND,
+  };
+};
 
 export const handleAdminLoginDrop = () => {
   return {
-    type: HANDLE_ADMIN_LOGIN
-  }
-} 
+    type: HANDLE_ADMIN_LOGIN,
+  };
+};
