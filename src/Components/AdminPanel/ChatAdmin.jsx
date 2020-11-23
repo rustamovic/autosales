@@ -1,10 +1,11 @@
 import React from 'react'
 import AdminPanelHeader from '../../Containers/AdminPanelHeader/AdminPanelHeader'
+import Chat from '../ChatPage/Chat'
 
 const ChatAdmin = () => {
     return (
         <AdminPanelHeader>
-            <p>Chat admin</p>
+            <Chat />
         </AdminPanelHeader>
     )
 }

@@ -73,7 +73,7 @@ const AdminLogin = ({
   const adminLoginFail = useSelector(adminLoginFailMine)
 
   return (
-    <Container id="GColor" style={{ paddingTop: "65px" }}>
+    <Container id="GColor">
       <Content>
         <MainContainer>
           {/* <LogoLink href={logoLinkUrl}> */}

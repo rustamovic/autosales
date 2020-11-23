@@ -25,6 +25,7 @@ const Form = lazy(() =>
 const History = lazy(() => import("../Components/History/Components"));
 const FullHistory = lazy(() => import("../Components/History/FullC"));
 const AdminLogin = lazy(() => import("../Components/AdminLogin/AdminLogin"));
+const ChatPage = lazy(() => import("../Components/ChatPage/ChatPage"));
 // const MapMine = lazy(() => import("../Components/MapMine"));
 
 const Routes = () => {
@@ -62,6 +63,7 @@ const Routes = () => {
               path="/Fullhistory/:id"
               component={FullHistory}
             />
+            <ProtectedRoute exact path="/chat" component={ChatPage} />
             <Route path="*" component={NotFound} />
           </Switch>
           <Footer />
