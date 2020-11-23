@@ -88,6 +88,7 @@ export default (state = initialState, action) => {
         deleteUserByIdBegin: false,
         deleteUserByIdSuccess: true,
         deleteUserByIdFail: false,
+        sellerData: state.sellerData.filter(data => data._id !== action.payload)
       };
     case DELETE_SELLER_BY_ID_FAIL:
       return {

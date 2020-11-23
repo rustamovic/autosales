@@ -68,12 +68,10 @@ export const deleteSellerById = (id) => async (dispatch) => {
   try {
     await axiosInstance().delete(`/admin/seller/delete/${id}`);
 
-    dispatch({ type: DELETE_SELLER_BY_ID_SUCCESS });
+    dispatch({ type: DELETE_SELLER_BY_ID_SUCCESS, payload: id });
   } catch (error) {
     dispatch({ type: DELETE_SELLER_BY_ID_FAIL });
   }
-
-  dispatch(adminSeller());
 };
 
 export const handleDeleteCloseSuccess = () => {
