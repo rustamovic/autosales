@@ -19,7 +19,7 @@ const AdminPanelHeader = ({ children }) => {
           activeClassName="adminNav"
           to="/admin-add"
         >
-          Add User
+          Add Admin
         </NavLink>
         <NavLink
           style={{ textDecoration: "none", height: "30px", textAlign: "left" }}
