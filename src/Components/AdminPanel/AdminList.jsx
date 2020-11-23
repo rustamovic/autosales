@@ -13,7 +13,13 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
-import { adminSeller, deleteSellerById, handleDeleteCloseFail, handleDeleteCloseSuccess, handleSellerData } from "../../Redux/seller/sellerAction";
+import {
+  adminSeller,
+  deleteSellerById,
+  handleDeleteCloseFail,
+  handleDeleteCloseSuccess,
+  handleSellerData,
+} from "../../Redux/seller/sellerAction";
 import {
   countMine,
   deleteUserByIdBeginMine,
@@ -24,6 +30,7 @@ import {
 import CircularProgress from "@material-ui/core/CircularProgress";
 import CustomModal from "./CustomModal";
 import CustomSnackbar from "../CustomSnackbar";
+import CustomBackdrop from "../CustomBackdrop";
 
 const useStyles = makeStyles({
   table: {
@@ -111,7 +118,7 @@ const AdminList = () => {
                         onClick={() => dispatch(deleteSellerById(row?._id))}
                         startIcon={<DeleteIcon />}
                       >
-                        {deleteUserByIdBegin ? <CircularProgress style={{width: "20px", height: "20px", color: "white"}} /> : "Delete"}
+                        Delete
                       </Button>
                     </TableCell>
                   </TableRow>
@@ -143,6 +150,8 @@ const AdminList = () => {
         messageSnack="There is an error of deleting!"
         handleClose={() => dispatch(handleDeleteCloseFail())}
       />
+
+      <CustomBackdrop loadingOpen={deleteUserByIdBegin} />
     </AdminPanelHeader>
   );
 };

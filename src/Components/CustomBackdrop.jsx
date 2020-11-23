@@ -10,4 +10,4 @@ const CustomBackdrop = ({ loadingOpen }) => {
   );
 };
 
-export default CustomBackdrop;
+export default React.memo(CustomBackdrop);
