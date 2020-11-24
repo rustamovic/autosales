@@ -28,8 +28,8 @@ const Career = () => {
   const history = useHistory();
   const formData = {
     VINN: myOwnVin,
-    trim: "",
-    model: getVinData[8] && getVinData[8].Value,
+    trim: getVinData[12] && getVinData[12].Value,
+    model: (getVinData[8] && getVinData[6] && getVinData[9]) && getVinData[6].Value + " " + getVinData[8].Value + " " + getVinData[9].Value,
     mileage: "",
     color: "",
     Fname: "",
@@ -48,6 +48,10 @@ const Career = () => {
   const handleChangi = (files) => {
     setFiles(files);
   };
+
+  if(formData?.VINN?.length===0) {
+    history.push('/')
+  }
 
   return (
     <div className="py-5" id="cooloor">
@@ -136,6 +140,7 @@ const Career = () => {
                           type="text"
                           className="form-control"
                           placeholder="VIN number"
+                          disabled={true}
                           {...formik.getFieldProps("VINN")}
                           value={formik.values.VINN}
                           onChange={formik.handleChange}
@@ -146,7 +151,8 @@ const Career = () => {
                           name="model"
                           type="text"
                           className="form-control"
-                          id="inputEmail4"
+                          id="model"
+                          disabled={true}
                           placeholder="Model"
                           {...formik.getFieldProps("model")}
                           value={formik.values.model}

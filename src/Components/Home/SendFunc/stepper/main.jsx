@@ -27,6 +27,7 @@ const Career = () => {
   const failAddCar = useSelector(failAddCarMine);
   const beginAddCar = useSelector(beginAddCarMine)
 
+  console.log(getVinData, "main data");
   const [files, setFiles] = useState([]);
 
   const dispatch = useDispatch();
@@ -34,8 +35,8 @@ const Career = () => {
 
   const formData = {
     VINN: myOwnVin,
-    trim: "",
-    model: getVinData[8] && getVinData[8].Value,
+    trim: getVinData[12] && getVinData[12].Value,
+    model: (getVinData[8] && getVinData[6] && getVinData[9]) && getVinData[6].Value + " " + getVinData[8].Value + " " + getVinData[9].Value,
     mileage: "",
     color: "",
     Fname: "",
@@ -51,10 +52,18 @@ const Career = () => {
     transmission: "",
   };
 
+
+  
+
+
   const handleChangi = (files) => {
     setFiles(files);
   };
 
+
+  if(formData?.VINN?.length===0) {
+    history.push('/')
+  }
   return (
     <div className="py-5" id="cooloor">
       <MDBContainer className="p-4 text-left bg-white" id="coloor">
@@ -142,6 +151,7 @@ const Career = () => {
                         <MyTextInput
                           name="VINN"
                           type="text"
+                          disabled={true}
                           className="form-control"
                           placeholder="VIN number"
                           {...formik.getFieldProps("VINN")}
@@ -153,8 +163,9 @@ const Career = () => {
                         <MyTextInput
                           name="model"
                           type="text"
+                          disabled={true}
                           className="form-control"
-                          id="inputEmail4"
+                          id="model"
                           placeholder="Model"
                           {...formik.getFieldProps("model")}
                           value={formik.values.model}
@@ -267,7 +278,7 @@ const Career = () => {
                       </div>
                     </div>
                     <h5 className="h5-responsive py-2">
-                      Upload the photos of your vehicle
+                      Upload the photos of your vehicle and document credentials
                     </h5>
                     <DropzoneArea
                       acceptedFiles={["image/jpeg", "image/png", "image/jpg"]}
