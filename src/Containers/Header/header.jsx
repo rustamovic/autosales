@@ -3,7 +3,7 @@ import logo from "../../Assets/logo512.png";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import HistoryIcon from "@material-ui/icons/History";
-import ChatIcon from "@material-ui/icons/Chat";
+
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import LoadingBar from "react-redux-loading-bar";
 import {
@@ -131,17 +131,23 @@ const Header = () => {
                 </MDBNavItem>
               ) : (
                 <MDBNavItem>
-                  <MDBNavLink onClick={toggleCollapse} to="/login">
-                    <strong>Login</strong>
-                  </MDBNavLink>
-                </MDBNavItem>
-              )}
-
-              {!token && (
-                <MDBNavItem>
-                  <MDBNavLink onClick={toggleCollapse} to="/admin">
-                    <strong>Login as Admin</strong>
-                  </MDBNavLink>
+                  <MDBDropdown>
+                    <MDBDropdownToggle nav caret>
+                      <MDBIcon icon="key" />
+                    </MDBDropdownToggle>
+                    <MDBDropdownMenu className="dropdown-default">
+                      <MDBDropdownItem>
+                        <Link onClick={toggleCollapse} to="/login">
+                          <strong>Login</strong>
+                        </Link>
+                      </MDBDropdownItem>
+                      <MDBDropdownItem>
+                        <Link onClick={toggleCollapse} to="/admin">
+                          <strong>Login as Admin</strong>
+                        </Link>
+                      </MDBDropdownItem>
+                    </MDBDropdownMenu>
+                  </MDBDropdown>
                 </MDBNavItem>
               )}
 
