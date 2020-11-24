@@ -26,8 +26,10 @@ export const makeLogin = (emailAddress, location, history) => async (
 
     if (location.state) {
       history.replace(location.state?.from?.pathname);
+      window.location = location.state?.from?.pathname
     } else {
       history.replace("/");
+      window.location = "/"
     }
 
     dispatch(hideLoading());

@@ -28,13 +28,6 @@ const AdminPanelHeader = ({ children }) => {
         >
           Users List
         </NavLink>
-        <NavLink
-          style={{ textDecoration: "none", height: "30px", textAlign: "left" }}
-          activeClassName="adminNav"
-          to="/admin-chat"
-        >
-           Chat
-        </NavLink>
       </div>
       <div style={{ width: "75%", marginLeft: "2%" }}>{children}</div>
     </div>

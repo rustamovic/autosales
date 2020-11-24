@@ -28,6 +28,7 @@ export const adminLogin = (email, password, history) => async (dispatch) => {
     const response = await axiosInstance().post("/admin/login", data);
     dispatch({ type: ADMIN_LOGIN_SUCCESS });
     history.push("/admin-list");
+    window.location = "/admin-list";
 
     localStorage.setItem("token", response.data)
     dispatch(hideLoading());

@@ -6,7 +6,6 @@ import Header from "../Containers/Header/header";
 import ProtectedRoute from "./ProtectedRoute";
 import AdminProtectedRoute from "./AdminProtectedRoute";
 
-const ChatAdmin = lazy(() => import("../Components/AdminPanel/ChatAdmin"));
 const AdminList = lazy(() => import("../Components/AdminPanel/AdminList"));
 const AddAdmin = lazy(() => import("../Components/AdminPanel/AddAdmin"));
 const Home = lazy(() => import("../Components/Home/Home"));
@@ -25,7 +24,6 @@ const Form = lazy(() =>
 const History = lazy(() => import("../Components/History/Components"));
 const FullHistory = lazy(() => import("../Components/History/FullC"));
 const AdminLogin = lazy(() => import("../Components/AdminLogin/AdminLogin"));
-const ChatPage = lazy(() => import("../Components/ChatPage/ChatPage"));
 // const MapMine = lazy(() => import("../Components/MapMine"));
 
 const Routes = () => {
@@ -55,7 +53,6 @@ const Routes = () => {
             <Route exact path="/admin" component={AdminLogin} />
             <AdminProtectedRoute exact path="/admin-add" component={AddAdmin} />
             <AdminProtectedRoute exact path="/admin-list" component={AdminList} />
-            <AdminProtectedRoute exact path="/admin-chat" component={ChatAdmin} />
             <ProtectedRoute exact path="/form" component={Form} />
             <ProtectedRoute exact path="/history" component={History} />
             <ProtectedRoute
@@ -63,7 +60,6 @@ const Routes = () => {
               path="/Fullhistory/:id"
               component={FullHistory}
             />
-            <ProtectedRoute exact path="/chat" component={ChatPage} />
             <Route path="*" component={NotFound} />
           </Switch>
           <Footer />

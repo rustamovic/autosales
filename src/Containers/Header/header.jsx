@@ -48,6 +48,7 @@ const Header = () => {
     dispatch(makeLogout());
     localStorage.removeItem("token");
     localStorage.removeItem("email");
+    window.location = "/";
   };
 
   const token = localStorage.getItem("token");
@@ -59,10 +60,6 @@ const Header = () => {
       onClick={toggleCollapse}
     />
   );
-
-  if (location?.pathname === "/admin") {
-    return null;
-  }
 
   return (
     <div>
@@ -122,13 +119,6 @@ const Header = () => {
                           <strong> History</strong>
                         </Link>
                       </MDBDropdownItem>
-                      <MDBDropdownItem>
-                        <Link onClick={toggleCollapse} to="/chat">
-                          {" "}
-                          <ChatIcon />
-                          <strong> Chat</strong>
-                        </Link>
-                      </MDBDropdownItem>
                       <MDBDropdownItem divider />
                       <MDBDropdownItem>
                         <Link onClick={toggleCollapseMine} to="/">
@@ -143,6 +133,14 @@ const Header = () => {
                 <MDBNavItem>
                   <MDBNavLink onClick={toggleCollapse} to="/login">
                     <strong>Login</strong>
+                  </MDBNavLink>
+                </MDBNavItem>
+              )}
+
+              {!token && (
+                <MDBNavItem>
+                  <MDBNavLink onClick={toggleCollapse} to="/admin">
+                    <strong>Login as Admin</strong>
                   </MDBNavLink>
                 </MDBNavItem>
               )}
@@ -211,7 +209,7 @@ const Header = () => {
         </MDBNavbar>
         {collapseID && overlay}
       </div>
-      <LoadingBar style={{zIndex: "9999", backgroundColor: "blue"}} />
+      <LoadingBar style={{ zIndex: "9999", backgroundColor: "blue" }} />
     </div>
   );
 };
