@@ -12,7 +12,7 @@ import "react-medium-image-zoom/dist/styles.css";
 const CustomModal = ({ open, handleClose }) => {
   const handlingData = useSelector(handlingDataMine);
 
-  console.log(handlingData);
+
   return (
     <Dialog
       open={open}
@@ -65,9 +65,9 @@ const CustomModal = ({ open, handleClose }) => {
           <p className="col-md-6 col-sm-12">
             <b>Model:</b> {handlingData?.carModel}
           </p>
-          {/* <p className="col-md-6 col-sm-12">
-            <b>Trim:</b> {handlingData?.carTrim}
-          </p> */}
+          <p className="col-md-6 col-sm-12">
+            <b>Trim:</b> {handlingData?.CarTrim}
+          </p>
         </div>
         <div className="row">
           <p className="col-md-6 col-sm-12">

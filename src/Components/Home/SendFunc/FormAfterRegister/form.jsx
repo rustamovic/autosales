@@ -4,7 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { addCarServer, handleCloseActionDrop } from "../../../../Redux/addCar/addCarActions";
+import {
+  addCarServer,
+  handleCloseActionDrop,
+} from "../../../../Redux/addCar/addCarActions";
 import { DropzoneArea } from "material-ui-dropzone";
 import "../stepper/main";
 import MyTextInput from "./MyTextInput";
@@ -15,7 +18,10 @@ import {
   myOwnVinMine,
 } from "../../../../Redux/VinNumber/VinNumberSelector";
 import CustomSnackbar from "../../../CustomSnackbar";
-import { beginAddCarMine, failAddCarMine } from "../../../../Redux/addCar/addCarSelector";
+import {
+  beginAddCarMine,
+  failAddCarMine,
+} from "../../../../Redux/addCar/addCarSelector";
 import CustomBackdrop from "../../../CustomBackdrop";
 
 const Career = () => {
@@ -24,12 +30,20 @@ const Career = () => {
   const getVinData = useSelector(getVinDataMine);
   const myOwnVin = useSelector(myOwnVinMine);
   const failAddCar = useSelector(failAddCarMine);
-  const beginAddCar = useSelector(beginAddCarMine)
+  const beginAddCar = useSelector(beginAddCarMine);
   const history = useHistory();
   const formData = {
     VINN: myOwnVin,
     trim: getVinData[12] && getVinData[12].Value,
-    model: (getVinData[8] && getVinData[6] && getVinData[9]) && getVinData[6].Value + " " + getVinData[8].Value + " " + getVinData[9].Value,
+    model:
+      getVinData[8] &&
+      getVinData[6] &&
+      getVinData[9] &&
+      getVinData[6].Value +
+        " " +
+        getVinData[8].Value +
+        " " +
+        getVinData[9].Value,
     mileage: "",
     color: "",
     Fname: "",
@@ -49,8 +63,8 @@ const Career = () => {
     setFiles(files);
   };
 
-  if(formData?.VINN?.length===0) {
-    history.push('/')
+  if (formData?.VINN?.length === 0) {
+    history.push("/");
   }
 
   return (
@@ -341,21 +355,16 @@ const Career = () => {
                     </div>
                     <div className="form-row">
                       <div className="form-group col-md-6">
-                        <MySelect
+                        <MyTextInput
                           label="When are you looking to sell your car? (optional)"
                           id="cars"
                           name="DateToSell"
+                          type="text"
                           className="form-control"
+                          {...formik.getFieldProps("DateToSell")}
                           value={formik.values.DateToSell}
                           onChange={formik.handleChange}
-                        >
-                          <option>Non-Selected</option>
-                          <option value="sellTiming">Sell timing</option>
-                          <option value="volvo">Once I find replacement</option>
-                          <option value="saab">Saab 95</option>
-                          <option value="mercedes">Mercedes SLK</option>
-                          <option value="audi">Audi TT</option>
-                        </MySelect>
+                        />
                       </div>
                       <div className="form-group col-md-6">
                         <MyTextInput

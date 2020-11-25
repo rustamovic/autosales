@@ -68,8 +68,8 @@ const AdminList = () => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-
-  console.log(sellerData, "sellerData");
+ 
+  
   useEffect(() => {
     dispatch(adminSeller());
   }, [dispatch]);

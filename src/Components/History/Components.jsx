@@ -21,7 +21,6 @@ import {
 const CardExample = () => {
   const dispatch = useDispatch();
   const userProfileData = useSelector(userProfileDataMine);
-  console.log(userProfileData, "data");
 
   useEffect(() => {
     dispatch(userProfileLogin());
