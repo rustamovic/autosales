@@ -7,7 +7,8 @@ import Button from "@material-ui/core/Button";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { handlingDataMine } from "../../Redux/seller/sellerSelector";
 import CircularProgress from "@material-ui/core/CircularProgress";
-
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 const CustomModal = ({ open, handleClose }) => {
   const handlingData = useSelector(handlingDataMine);
 
@@ -29,11 +30,13 @@ const CustomModal = ({ open, handleClose }) => {
             handlingData.Photos.map((photo, index) => {
               return (
                 <div className="col-md-4 col-sm-12 mt-2" key={index}>
-                  <img
-                    style={{ width: "90%", margin: "0 auto" }}
-                    src={photo}
-                    alt="index"
-                  />
+                  <Zoom>
+                    <img
+                      style={{ width: "90%", margin: "0 auto" }}
+                      src={photo}
+                      alt="index"
+                    />
+                  </Zoom>
                 </div>
               );
             })
@@ -50,10 +53,33 @@ const CustomModal = ({ open, handleClose }) => {
             <b>Lastname:</b> {handlingData?.LastName}
           </p>
         </div>
-
         <div className="row">
           <p className="col-md-6 col-sm-12">
-            <b>SellDate:</b> {handlingData?.SellDate}
+            <b>Email:</b> {handlingData?.emailAddress}
+          </p>
+          <p className="col-md-6 col-sm-12">
+            <b>PhoneNumber:</b> {handlingData?.phoneNumber}
+          </p>
+        </div>
+        <div className="row">
+          <p className="col-md-6 col-sm-12">
+            <b>Model:</b> {handlingData?.carModel}
+          </p>
+          {/* <p className="col-md-6 col-sm-12">
+            <b>Trim:</b> {handlingData?.carTrim}
+          </p> */}
+        </div>
+        <div className="row">
+          <p className="col-md-6 col-sm-12">
+            <b>Color:</b> {handlingData?.carColor}
+          </p>
+          <p className="col-md-6 col-sm-12">
+            <b>Mileage:</b> {handlingData?.carMileage}
+          </p>
+        </div>
+        <div className="row">
+          <p className="col-md-6 col-sm-12">
+            <b>Transmision:</b> {handlingData?.transmision}
           </p>
           <p className="col-md-6 col-sm-12">
             <b>Condition:</b> {handlingData?.VehicleCondition}
@@ -62,28 +88,10 @@ const CustomModal = ({ open, handleClose }) => {
 
         <div className="row">
           <p className="col-md-6 col-sm-12">
-            <b>Mileage:</b> {handlingData?.carMileage}
-          </p>
-          <p className="col-md-6 col-sm-12">
-            <b>Model:</b> {handlingData?.carModel}
-          </p>
-        </div>
-
-        <div className="row">
-          <p className="col-md-6 col-sm-12">
-            <b>Email:</b> {handlingData?.emailAddress}
+            <b>SellDate:</b> {handlingData?.SellDate}
           </p>
           <p className="col-md-6 col-sm-12">
             <b>Price:</b> {handlingData?.expectedPrice}
-          </p>
-        </div>
-
-        <div className="row">
-          <p className="col-md-6 col-sm-12">
-            <b>Transmision:</b> {handlingData?.transmision}
-          </p>
-          <p className="col-md-6 col-sm-12">
-            <b>PhoneNumber:</b> {handlingData?.phoneNumber}
           </p>
         </div>
 
@@ -95,13 +103,6 @@ const CustomModal = ({ open, handleClose }) => {
             <b>Zip Code:</b> {handlingData?.postCode}
           </p>
         </div>
-
-        <div className="row">
-          <p className="col-md-6 col-sm-12">
-            <b>Color:</b> {handlingData?.carColor}
-          </p>
-        </div>
-
         <div className="row">
           <p className="col-md-12">
             <b>Message:</b> {handlingData?.message}
